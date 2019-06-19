@@ -10,6 +10,8 @@ We use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) to configure zsh.
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
+Install one of the [nerd fonts](https://nerdfonts.com).
+
 We use [powerlevel10k](https://github.com/romkatv/powerlevel10k) as a theme in oh-my-zsh.
 ```sh
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
