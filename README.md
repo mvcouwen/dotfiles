@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository contains configurations files for zsh an vim.
+This repository contains configurations files for zsh and vim.
 
 ## Required packages
 
