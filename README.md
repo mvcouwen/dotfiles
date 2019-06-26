@@ -17,6 +17,11 @@ We use [powerlevel10k](https://github.com/romkatv/powerlevel10k) as a theme in o
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 ```
 
+Install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) as a plugin for oh-my-zsh.
+```sh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
 We manage our vim plugins with [vim-plug](https://github.com/junegunn/vim-plug).
 ```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
