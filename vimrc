@@ -11,3 +11,4 @@ let g:airline_theme='base16color'
 
 " Initialize plugin system
 call plug#end()
+
