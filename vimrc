@@ -19,6 +19,12 @@ let g:vimtex_compiler_latexmk = {
     \ 'continuous' : 0,
     \}
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 " Initialize plugin system
 call plug#end()
 
