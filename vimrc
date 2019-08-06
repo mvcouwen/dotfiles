@@ -1,3 +1,4 @@
+set nocompatible
 let g:mapleader = " "
 let g:maplocalleader = "," 
 
@@ -27,7 +28,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Initialize plugin system
 call plug#end()
-
+let g:tex_flavor = 'latex'
 colorscheme gruvbox
 filetype plugin indent on
 set mouse=a
