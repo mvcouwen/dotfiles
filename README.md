@@ -32,6 +32,11 @@ We make use of GNU coreutils and findutils (used with prefix g).
 brew install coreutils findutils
 ```
 
+Install a the homebrew version of vim for python support.
+```sh
+brew install vim
+```
+
 ## Installation
 
 Download this repository in ~/.dotfiles.
