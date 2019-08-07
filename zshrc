@@ -1,5 +1,6 @@
 export TERM="xterm-256color"
 alias vim="/usr/local/Cellar/vim/8.1.1800/bin/vim"
+export VIMRUNTIME="/usr/local/Cellar/vim/8.1.1800/share/vim/vim81"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
