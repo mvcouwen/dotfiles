@@ -1,4 +1,5 @@
 export TERM="xterm-256color"
+export LC_ALL=en_US.UTF-8
 alias vim="/usr/local/Cellar/vim/8.1.1800/bin/vim"
 export VIMRUNTIME="/usr/local/Cellar/vim/8.1.1800/share/vim/vim81"
 
