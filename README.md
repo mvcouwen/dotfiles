@@ -55,4 +55,9 @@ Install the necessary vim plugins. Reload vim and run the following code.
 :PlugInstall
 ```
 
+Run the python script to install YouCompleteMe.
+```sh
+~/.vim/plugged/YouCompleteMe/install.py
+```
+
 

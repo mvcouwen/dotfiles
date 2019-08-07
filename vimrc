@@ -22,9 +22,14 @@ let g:vimtex_compiler_latexmk = {
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+Plug 'ycm-core/YouCompleteMe'
+
+Plug 'petRUShkba/vim-magma'
+Plug 'petRUShkba/vim-gap'
 
 " Initialize plugin system
 call plug#end()
@@ -40,6 +45,7 @@ set autoindent
 set breakindent
 set linebreak
 set hidden
+set backspace=2
 
 """ LaTeX commands
 
