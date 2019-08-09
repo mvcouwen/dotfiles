@@ -27,9 +27,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'ycm-core/YouCompleteMe'
-
-Plug 'petRUShkba/vim-magma'
-Plug 'petRUShkba/vim-gap'
+let g:ycm_semantic_triggers = { 'tex' : ['re!\w{3}']}
 
 " Initialize plugin system
 call plug#end()
