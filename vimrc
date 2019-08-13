@@ -27,6 +27,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'ycm-core/YouCompleteMe'
+let g:ycm_semantic_triggers = { 'tex' : ['\']}
 
 " Initialize plugin system
 call plug#end()
