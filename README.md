@@ -27,11 +27,6 @@ We manage our vim plugins with [vim-plug](https://github.com/junegunn/vim-plug).
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-We make use of GNU coreutils and findutils (used with prefix g).
-```sh
-brew install coreutils findutils
-```
-
 Install a the homebrew version of vim for python support.
 ```sh
 brew install vim
