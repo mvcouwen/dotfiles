@@ -34,6 +34,7 @@ call plug#end()
 let g:tex_flavor = 'latex'
 colorscheme gruvbox
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 set mouse=a
 set tabstop=4
 set softtabstop=0
