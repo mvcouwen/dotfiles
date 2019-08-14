@@ -41,6 +41,7 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set breakindent
+set breakindentopt=shift:2
 set linebreak
 set hidden
 set backspace=2
