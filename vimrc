@@ -16,9 +16,11 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='gruvbox'
 
 Plug 'lervag/vimtex'
+let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = {
     \ 'continuous' : 0,
     \}
+let g:vimtex_view_method = 'skim'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -27,11 +29,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'ycm-core/YouCompleteMe'
-let g:ycm_semantic_triggers = { 'tex' : ['\']}
 
 " Initialize plugin system
 call plug#end()
-let g:tex_flavor = 'latex'
 colorscheme gruvbox
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -48,6 +48,12 @@ set hidden
 set backspace=2
 
 """ LaTeX commands
+
+autocmd FileType tex let ycm_min_num_of_chars_for_completion=99
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers={}
+endif
+autocmd VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
 "Script that cleans out tex auxiliary files when I close a tex-file
 autocmd VimLeave *.tex !$(dirname $(greadlink -f $HOME/.vimrc))/scripts/texclear %
