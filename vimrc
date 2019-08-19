@@ -46,6 +46,7 @@ set breakindentopt=shift:2
 set linebreak
 set hidden
 set backspace=2
+set number
 
 """ LaTeX commands
 
