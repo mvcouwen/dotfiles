@@ -53,9 +53,9 @@ set number
 augroup tex_config
     autocmd!
     autocmd FileType tex let g:ycm_min_num_of_chars_for_completion=99
-    if !exists('g:ycm_semantic_triggers')
-        let g:ycm_semantic_triggers={}
-    endif
-    autocmd VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
+"    if !exists('g:ycm_semantic_triggers')
+"        let g:ycm_semantic_triggers={}
+"    endif
+"    autocmd VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
     autocmd User VimtexEventQuit call vimtex#compiler#clean(0) 
 augroup END
