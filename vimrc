@@ -32,6 +32,7 @@ Plug 'ycm-core/YouCompleteMe'
 
 " Initialize plugin system
 call plug#end()
+
 colorscheme gruvbox
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -47,6 +48,10 @@ set linebreak
 set hidden
 set backspace=2
 set number
+
+" Enable italics
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
 
 """ LaTeX commands
 
