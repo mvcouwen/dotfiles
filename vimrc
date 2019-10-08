@@ -34,6 +34,7 @@ Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 colorscheme gruvbox
+set termguicolors
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set mouse=a
