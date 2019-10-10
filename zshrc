@@ -1,8 +1,8 @@
 export TERM="xterm-256color"
 export LC_ALL=en_US.UTF-8
-export PATH=/usr/local/opt/ruby/bin:$PATH
-# alias vim="/usr/local/Cellar/vim/8.1.1800/bin/vim"
-# export VIMRUNTIME="/usr/local/Cellar/vim/8.1.1800/share/vim/vim81"
+# Add Homebrew's sbin to path
+export PATH="/usr/local/sbin:$PATH"
+alias vim="mvim -v"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
