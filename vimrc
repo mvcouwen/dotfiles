@@ -35,7 +35,7 @@ call plug#end()
 
 colorscheme gruvbox
 set termguicolors
-set guifont=DejaVuSansMono\ Nerd\ Font
+set guifont=Hack\ Nerd\ Font
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set mouse=a
