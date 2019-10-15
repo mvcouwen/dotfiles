@@ -40,15 +40,15 @@ filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set mouse=a
 set tabstop=4
-set softtabstop=0
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
 set breakindent
 set breakindentopt=shift:2
-set linebreak
-set hidden
-set backspace=2
+set linebreak "wraps lines without inserting line breaks
+set hidden "make buffers work better
+set backspace=2 "make backspace work across lines
 set number
 
 " Enable italics
