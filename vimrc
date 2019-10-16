@@ -40,16 +40,17 @@ set guifont=Hack\ Nerd\ Font
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set mouse=a
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+set tabstop=4 " the amount of spaces that one tab is worth
+set softtabstop=4 " determines the amount of whitespace introduced by typing <tab>
+set shiftwidth=4 " the amount of spaces used for indenting, i.e. when using > en <
+set expandtab " expand tabs to spaces
+set smarttab " whitespace at beginning of a line introduced by <tab> is shiftwidth instead of softtabstop
 set autoindent
 set breakindent
 set breakindentopt=shift:2
-set linebreak "wraps lines without inserting line breaks
-set hidden "make buffers work better
-set backspace=2 "make backspace work across lines
+set linebreak " wraps lines without inserting line breaks
+set hidden " make buffers work better
+set backspace=2 " make backspace work across lines
 set number
 
 " Enable italics
