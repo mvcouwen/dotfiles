@@ -1,6 +1,6 @@
 set nocompatible
 let g:mapleader = " "
-let g:maplocalleader = "," 
+let g:maplocalleader = ","
 
 " vim-plugin section
 " Specify a directory for plugins
@@ -64,5 +64,5 @@ augroup tex_config
 "        let g:ycm_semantic_triggers={}
 "    endif
 "    autocmd VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
-    autocmd User VimtexEventQuit call vimtex#compiler#clean(0) 
+    autocmd User VimtexEventQuit call vimtex#compiler#clean(0)
 augroup END
