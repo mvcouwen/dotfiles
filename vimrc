@@ -9,11 +9,12 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 Plug 'morhetz/gruvbox'
 
-Plug 'vim-airline/vim-airline'
-let g:airline_powerline_fonts = 1
+Plug 'itchyny/lightline.vim'
+set laststatus=2
+" let g:airline_powerline_fonts = 1
 
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='gruvbox'
+" Plug 'vim-airline/vim-airline-themes'
+" let g:airline_theme='gruvbox'
 
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
