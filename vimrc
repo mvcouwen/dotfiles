@@ -31,6 +31,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'ycm-core/YouCompleteMe'
 
+Plug 'PetRUShka/vim-magma'
+
 " Initialize plugin system
 call plug#end()
 
@@ -85,3 +87,7 @@ augroup tex_config
         \]
     autocmd User VimtexEventQuit call vimtex#compiler#clean(0)
 augroup END
+
+""" Magma commands
+autocmd BufEnter *.m :setlocal filetype=magma
+
