@@ -58,11 +58,6 @@ Install the necessary vim plugins. Reload vim and run the following code.
 
 Use :CocInstall extension to install the following extensions.
 ```vim
-:CocInstall coc-vimtex coc-ultisnips coc-snippets
-```
-
-Add the following setting to coc-settings.json. Open it with `:CocConfig`. This makes vim select the first item on completion.
-```json
-"suggest.noselect": false
+:CocInstall coc-vimtex coc-snippets
 ```
 
