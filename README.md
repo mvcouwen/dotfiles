@@ -32,6 +32,12 @@ Install a the homebrew version of vim for python support.
 brew install vim
 ```
 
+Install node and the latest stable nodejs (needed for coc.nvim).
+```sh
+brew install node
+curl -sL install-node.now.sh | sh
+```
+
 ## Installation
 
 Download this repository in ~/.dotfiles.
@@ -50,9 +56,13 @@ Install the necessary vim plugins. Reload vim and run the following code.
 :PlugInstall
 ```
 
-Run the python script to install YouCompleteMe.
-```sh
-~/.vim/plugged/YouCompleteMe/install.py
+Use :CocInstall extension to install the following extensions.
+```vim
+:CocInstall coc-vimtex coc-ultisnips coc-snippets
 ```
 
+Add the following setting to coc-settings.json. Open it with `:CocConfig`. This makes vim select the first item on completion.
+```json
+"suggest.noselect": false
+```
 

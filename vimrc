@@ -1,5 +1,5 @@
 set nocompatible
-let g:mapleader = " "
+let g:mapleader = "<space>"
 let g:maplocalleader = ","
 
 " vim-plugin section
@@ -23,11 +23,7 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_view_method = 'skim'
 let g:vimtex_complete_close_braces = 1
 
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
