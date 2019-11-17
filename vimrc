@@ -11,6 +11,13 @@ Plug 'morhetz/gruvbox'
 
 Plug 'itchyny/lightline.vim'
 set laststatus=2
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme': 'gruvbox',
+    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+    \ }
+
 " let g:airline_powerline_fonts = 1
 
 " Plug 'vim-airline/vim-airline-themes'
@@ -20,7 +27,7 @@ Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = {
     \ 'continuous' : 0,
-    \}
+    \ }
 let g:vimtex_view_method = 'skim'
 let g:vimtex_complete_close_braces = 1
 
