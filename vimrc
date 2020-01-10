@@ -87,6 +87,8 @@ inoremap <silent><expr> <S-TAB>
     \ coc#jumpable() ? "\<C-r>=coc#rpc#request('snippetPrev',[])\<CR>" :
     \ "\<C-h>"
 
+" Use TAB to put the selected text into the visual placeholder
+vmap <TAB> <Plug>(coc-snippets-select)
 
 " Use <cr> to confirm completion. '<C-g>u' means break undo chain at current
 " position.
