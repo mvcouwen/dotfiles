@@ -47,8 +47,8 @@ git clone https://github.com/mvcouwen/dotfiles.git ~/.dotfiles
 
 Make the necessary symbolic links.
 ```sh
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/zshrc ~/.zshrc
+ln -s ~/.dotfiles/vimrc ~/.vimrc
 ```
 
 Install the necessary vim plugins. Reload vim and run the following code.
