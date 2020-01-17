@@ -88,7 +88,8 @@ inoremap <silent><expr> <S-TAB>
     \ "\<C-h>"
 
 " Use TAB to put the selected text into the visual placeholder
-vmap <TAB> <Plug>(coc-snippets-select)
+" vmap <TAB> <Plug>(coc-snippets-select)
+vmap <silent> <TAB> :call coc#rpc#request('doKeymap',['snippets-select'])<cr>i
 
 " Use <cr> to confirm completion. '<C-g>u' means break undo chain at current
 " position.
