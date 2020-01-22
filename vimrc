@@ -61,7 +61,7 @@ set number
 
 " Settings for coc.nvim
 set cmdheight=2 "two lines for under statusline
-set updatetime=300 "time vim waits before triggering plugin, standard 4000, too low can lead to highlighting glitches.
+set updatetime=500 "time vim waits before triggering plugin, standard 4000, too low can lead to highlighting glitches.
 set signcolumn=yes "sign column left of line numbers
 
 " The following function checks whether the cursor is at the beginning of a
