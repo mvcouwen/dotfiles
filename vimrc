@@ -190,6 +190,16 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+let languageservers = {}
+let languageservers['latex'] = {
+    \   'command': 'texlab',
+    \   'filetypes': ['tex','bib','plaintex','context'],
+    \   }
+
+let g:coc_user_config = {
+    \   'languageserver': languageservers,
+    \   }
+
 " Enable italics
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
