@@ -194,6 +194,7 @@ let languageservers = {}
 let languageservers['latex'] = {
     \   'command': 'texlab',
     \   'filetypes': ['tex','bib','plaintex','context'],
+    \   'disableCompletion': v:true
     \   }
 
 let g:coc_user_config = {
