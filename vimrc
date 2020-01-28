@@ -174,21 +174,14 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+" Jump to next diagnostic
+nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
+" Jump to previous diagnostic
+nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
+
+" Build file (define <Plug>(build) based on filetype)
+nmap <silent> <leader>b <Plug>(build)
 
 let languageservers = {}
 let languageservers['latex'] = {
@@ -201,6 +194,7 @@ let g:coc_user_config = {
     \   'languageserver': languageservers,
     \   'diagnostic.locationlist': v:true,
     \   'diagnostic.messageTarget': 'float',
+    \   'latex.build.args': '-pv'
     \   }
 
 " Enable italics
@@ -212,6 +206,7 @@ let &t_ZR="\e[23m"
 augroup tex_config
     autocmd!
     autocmd User VimtexEventQuit call vimtex#compiler#clean(0)
+    autocmd FileType tex nnoremap <buffer><silent> <Plug>(build) :CocCommand latex.Build<CR>
 augroup END
 
 """ Magma commands
