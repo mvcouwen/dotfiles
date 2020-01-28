@@ -64,23 +64,14 @@ set cmdheight=2 "two lines for under statusline
 set updatetime=500 "time vim waits before triggering plugin, standard 4000, too low can lead to highlighting glitches.
 set signcolumn=yes "sign column left of line numbers
 
-" The following function checks whether the cursor is at the beginning of a
-" line or the previous character is a space.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 " Implement the use of the TAB-key.
 " If pum is visible, then complete.
 " If not but inside jumpable snippet, go to next placeholder.
-" If none of the above but after a space or at the beginning of a line, insert
-" a <TAB> character.
-" Otherwise, make pum visible.
+" If none of the above insert a <TAB> character.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ coc#jumpable() ? "\<C-r>=coc#rpc#request('snippetNext',[])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+      \ "\<TAB>"
 
 inoremap <silent><expr> <S-TAB>
     \ pumvisible() ? "\<C-p>" :
@@ -97,7 +88,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " don't give |ins-completion-menu| messages.
 " set shortmess+=c
-
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
