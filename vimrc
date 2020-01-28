@@ -199,6 +199,8 @@ let languageservers['latex'] = {
 
 let g:coc_user_config = {
     \   'languageserver': languageservers,
+    \   'diagnostic.locationlist': v:true,
+    \   'diagnostic.messageTarget': 'float',
     \   }
 
 " Enable italics
