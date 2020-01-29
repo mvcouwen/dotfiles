@@ -55,9 +55,3 @@ Install the necessary vim plugins. Reload vim and run the following code.
 ```vim
 :PlugInstall
 ```
-
-Use :CocInstall extension to install the following extensions.
-```vim
-:CocInstall coc-vimtex coc-snippets
-```
-

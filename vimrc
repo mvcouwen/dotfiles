@@ -1,5 +1,5 @@
 set nocompatible
-let g:mapleader = "<space>"
+let g:mapleader = "\<space>"
 let g:maplocalleader = ","
 
 " vim-plugin section
@@ -28,8 +28,8 @@ let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = {
     \ 'continuous' : 0,
     \ }
+let g:vimtex_complete_enabled = 0
 let g:vimtex_view_method = 'skim'
-let g:vimtex_complete_close_braces = 1
 
 Plug 'honza/vim-snippets'
 
@@ -97,7 +97,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " don't give |ins-completion-menu| messages.
 " set shortmess+=c
-
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -174,28 +173,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>e :<C-u>CocList --normal diagnostics<cr>
 " Jump to next diagnostic
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
 " Jump to previous diagnostic
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
 
 " Build file (define <Plug>(build) based on filetype)
-nmap <silent> <leader>b <Plug>(build)
+nmap <buffer><silent> <leader>b <plug>(build)
 
-let languageservers = {}
-let languageservers['latex'] = {
-    \   'command': 'texlab',
-    \   'filetypes': ['tex','bib','plaintex','context'],
-    \   'disableCompletion': v:true
-    \   }
-
+let g:coc_global_extensions = ['coc-snippets','coc-texlab']
 let g:coc_user_config = {
-    \   'languageserver': languageservers,
-    \   'diagnostic.locationlist': v:true,
-    \   'diagnostic.messageTarget': 'float',
-    \   'latex.build.args': '-pv'
-    \   }
+    \ 'latex.build.args': ["-pdf","-pv","-synctex=1"],
+    \ 'latex.forwardSearch.executable': '/Applications/Skim.app/Contents/SharedSupport/displayline',
+    \ 'latex.forwardSearch.args': ["%l", "%p", "%f"]
+    \ }
 
 " Enable italics
 let &t_ZH="\e[3m"
@@ -207,6 +199,7 @@ augroup tex_config
     autocmd!
     autocmd User VimtexEventQuit call vimtex#compiler#clean(0)
     autocmd FileType tex nnoremap <buffer><silent> <Plug>(build) :CocCommand latex.Build<CR>
+    autocmd FileType tex nnoremap <buffer><silent> <leader>v :CocCommand latex.ForwardSearch<CR>
 augroup END
 
 """ Magma commands
