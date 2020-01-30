@@ -18,11 +18,6 @@ let g:lightline = {
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
     \ }
 
-" let g:airline_powerline_fonts = 1
-
-" Plug 'vim-airline/vim-airline-themes'
-" let g:airline_theme='gruvbox'
-
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = {
