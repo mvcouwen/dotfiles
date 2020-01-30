@@ -3,6 +3,8 @@ export LC_ALL=en_US.UTF-8
 # Add Homebrew's sbin to path
 export PATH="/usr/local/sbin:$PATH"
 alias vim="mvim -v"
+# Make gpg ask for passphrase when signing commit
+export GPG_TTY=$(tty)
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
