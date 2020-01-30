@@ -166,9 +166,9 @@ nmap <buffer><silent> <leader>b <plug>(build)
 
 let g:coc_global_extensions = ["coc-snippets","coc-texlab"]
 let g:coc_user_config = {
-    \ 'latex.build.args': ["-pdf","-pv","-e","$pdf_previewer=q/Open -a Skim/","-synctex=1","-interaction=nonstopmode"],
+    \ 'latex.build.args': ["-pdf","-pv","-e","$pdf_previewer=q/Open -g -a Skim/","-synctex=1","-interaction=nonstopmode"],
     \ 'latex.forwardSearch.executable': '/Applications/Skim.app/Contents/SharedSupport/displayline',
-    \ 'latex.forwardSearch.args': ["%l", "%p", "%f"],
+    \ 'latex.forwardSearch.args': ["-g","%l", "%p", "%f"],
     \ 'diagnostic.messageTarget': 'float',
     \ 'diagnostic.errorSign': ">>",
     \ 'diagnostic.warningSign': "--",
