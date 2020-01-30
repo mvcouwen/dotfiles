@@ -7,7 +7,7 @@ let g:maplocalleader = ","
 call plug#begin('~/.vim/plugged')
 
 " Plugins
-Plug 'morhetz/gruvbox'
+Plug 'mvcouwen/gruvbox'
 
 Plug 'itchyny/lightline.vim'
 set laststatus=2
@@ -23,7 +23,7 @@ let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = {
     \ 'continuous' : 0,
     \ }
-let g:vimtex_complete_enabled = 0
+let g:vimtex_complete_enabled = v:false
 let g:vimtex_view_method = 'skim'
 
 Plug 'honza/vim-snippets'
@@ -86,10 +86,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -168,11 +164,16 @@ nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
 " Build file (define <Plug>(build) based on filetype)
 nmap <buffer><silent> <leader>b <plug>(build)
 
-let g:coc_global_extensions = ['coc-snippets','coc-texlab']
+let g:coc_global_extensions = ["coc-snippets","coc-texlab"]
 let g:coc_user_config = {
     \ 'latex.build.args': ["-pdf","-pv","-e","$pdf_previewer=q/Open -a Skim/","-synctex=1"],
     \ 'latex.forwardSearch.executable': '/Applications/Skim.app/Contents/SharedSupport/displayline',
-    \ 'latex.forwardSearch.args': ["%l", "%p", "%f"]
+    \ 'latex.forwardSearch.args': ["%l", "%p", "%f"],
+    \ 'diagnostic.messageTarget': 'float',
+    \ 'diagnostic.errorSign': ">>",
+    \ 'diagnostic.warningSign': "--",
+    \ 'diagnostic.infoSign': "--",
+    \ 'diagnostic.hintSign': "--"
     \ }
 
 " Enable italics
