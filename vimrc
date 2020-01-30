@@ -173,7 +173,35 @@ let g:coc_user_config = {
     \ 'diagnostic.errorSign': ">>",
     \ 'diagnostic.warningSign': "--",
     \ 'diagnostic.infoSign': "--",
-    \ 'diagnostic.hintSign': "--"
+    \ 'diagnostic.hintSign': "--",
+    \ 'suggest.completionItemKindLabels': {
+    \   'text': "\uf49e",
+    \   'method': "\uf423",
+    \   'function': "\uf499",
+    \   'constructor': "\uf425",
+    \   'field': "\uf445",
+    \   'variable': "\uf467",
+    \   'class': "\uf487",
+    \   'interface': "\uf44c",
+    \   'module': "\uf414",
+    \   'property': "\uf449",
+    \   'unit': "\ufc73",
+    \   'value': "\ufbf7",
+    \   'enum': "\uf452",
+    \   'keyword': "\uf43d",
+    \   'snippet': "\uf44f",
+    \   'color': "\uf48f",
+    \   'file': "\uf4a5",
+    \   'reference': "\uf405",
+    \   'folder': "\uf413",
+    \   'enumMember': "\uf444",
+    \   'constant': "\uf423",
+    \   'struct': "\uf8c2",
+    \   'event': "\uf427",
+    \   'operator': "\u26a1",
+    \   'typeParameter': "\uf420",
+    \   'default': "\uf40c",
+    \ }
     \ }
 
 " Enable italics
