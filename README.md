@@ -55,3 +55,13 @@ Install the necessary vim plugins. Reload vim and run the following code.
 ```vim
 :PlugInstall
 ```
+
+Install Charles Campbell's amsmath vimball for better highlighting in tex-files when using the amsmath package.
+```sh
+vim http://www.drchip.org/astronaut/vim/vbafiles/amsmath.vba.gz
+```
+Then run the following in vim.
+```vim
+:UseVimball
+```
+Press enter and quit vim afterwards.
