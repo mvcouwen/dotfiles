@@ -54,6 +54,12 @@ set hidden " make buffers work better
 set backspace=2 " make backspace work across lines
 set number
 
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+
+nnoremap <silent> <leader>nn :<c-u>Hexplore<cr>
+nnoremap <silent> <leader>nv :<c-u>Vexplore!<cr>
+
 " Settings for coc.nvim
 set cmdheight=2 "two lines for under statusline
 set updatetime=500 "time vim waits before triggering plugin, standard 4000, too low can lead to highlighting glitches.
@@ -175,32 +181,32 @@ let g:coc_user_config = {
     \ 'diagnostic.infoSign': "--",
     \ 'diagnostic.hintSign': "--",
     \ 'suggest.completionItemKindLabels': {
-    \   'text': "\uf49e",
-    \   'method': "\uf423",
-    \   'function': "\uf499",
-    \   'constructor': "\uf425",
-    \   'field': "\uf445",
-    \   'variable': "\uf467",
-    \   'class': "\uf487",
-    \   'interface': "\uf44c",
-    \   'module': "\uf414",
-    \   'property': "\uf449",
-    \   'unit': "\ufc73",
-    \   'value': "\ufbf7",
-    \   'enum': "\uf452",
-    \   'keyword': "\uf43d",
-    \   'snippet': "\uf44f",
+    \   'text': "\ue612",
+    \   'method': "\uf6a6",
+    \   'function': "\uf794",
+    \   'constructor': "\ufab4",
+    \   'field': "\uf111",
+    \   'variable': "\uf10c",
+    \   'class': "\uf1b3",
+    \   'interface': "\f838",
+    \   'module': "\uf668",
+    \   'property': "\ufab6",
+    \   'unit': "\ue21f",
+    \   'value': "\uf922",
+    \   'enum': "\uf451",
+    \   'keyword': "\uf80a",
+    \   'snippet': "\ue796",
     \   'color': "\uf48f",
-    \   'file': "\uf4a5",
-    \   'reference': "\uf405",
+    \   'file': "\uf016",
+    \   'reference': "\uf02d",
     \   'folder': "\uf413",
     \   'enumMember': "\uf444",
-    \   'constant': "\uf423",
-    \   'struct': "\uf8c2",
-    \   'event': "\uf427",
-    \   'operator': "\u26a1",
-    \   'typeParameter': "\uf420",
-    \   'default': "\uf40c",
+    \   'constant': "\uf435",
+    \   'struct': "\uf1b3",
+    \   'event': "\u26a1",
+    \   'operator': "\uf6d3",
+    \   'typeParameter': "\uf673",
+    \   'default': "\ufae2",
     \ }
     \ }
 
