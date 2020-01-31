@@ -180,8 +180,9 @@ let g:coc_user_config = {
     \ 'diagnostic.warningSign': "--",
     \ 'diagnostic.infoSign': "--",
     \ 'diagnostic.hintSign': "--",
-    \ 'suggest.disableMenu': v:true,
-    \ 'suggest.disableMenuShortcut': v:true,
+    \ 'suggest.disableMenu': v:false,
+    \ 'suggest.disableMenuShortcut': v:false,
+    \ 'suggest.detailField': "preview",
     \ 'suggest.completionItemKindLabels': {
     \   'text': "\ue612",
     \   'method': "\uf6a6",
