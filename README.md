@@ -49,6 +49,8 @@ Make the necessary symbolic links.
 ```sh
 ln -s ~/.dotfiles/zshrc ~/.zshrc
 ln -s ~/.dotfiles/vimrc ~/.vimrc
+mkdir -p ~/.config/nvim
+ln -s ~/.dotfiles/init.vim ~/.config/nvim/init.vim
 ```
 
 Install the necessary vim plugins. Reload vim and run the following code.
