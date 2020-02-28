@@ -7,7 +7,7 @@ let g:maplocalleader = ","
 call plug#begin('~/.vim/plugged')
 
 " Plugins
-Plug 'mvcouwen/gruvbox'
+Plug 'morhetz/gruvbox'
 
 Plug 'itchyny/lightline.vim'
 set laststatus=2
