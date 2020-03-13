@@ -168,7 +168,7 @@ nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
 
 " Build file (define <Plug>(build) based on filetype)
-nmap <buffer><silent> <leader>b <plug>(build)
+nmap <leader>b <plug>(build)
 
 let g:coc_global_extensions = ["coc-snippets","coc-texlab"]
 let g:coc_user_config = {
