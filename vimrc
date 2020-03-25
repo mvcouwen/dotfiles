@@ -27,6 +27,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'tpope/vim-fugitive'
+
 " Initialize plugin system
 call plug#end()
 
@@ -62,10 +64,12 @@ let g:lightline = {
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
     \ 'component_function': {
     \   'coc_diagnostics' : 'LightlineCocDiagnostics',
+    \   'fugitive' : 'FugitiveHead',
     \ },
     \ 'active': {
     \   'left': [   ['mode', 'paste' ],
-    \               ['readonly', 'filename', 'modified'] ],
+    \               ['fugitive', 'readonly', 'filename', 'modified'],
+    \               [] ],
     \   'right': [  ['lineinfo'],
     \               ['percent'],
     \               ['fileformat', 'fileencoding', 'filetype'] ]
