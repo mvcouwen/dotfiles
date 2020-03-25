@@ -12,11 +12,6 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 set laststatus=2
 set noshowmode
-let g:lightline = {
-    \ 'colorscheme': 'gruvbox',
-    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-    \ }
 
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
@@ -30,7 +25,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'PetRUShka/vim-magma'
+Plug 'airblade/vim-gitgutter'
 
 " Initialize plugin system
 call plug#end()
@@ -59,6 +54,43 @@ let g:netrw_banner=0
 
 nnoremap <silent> <leader>nn :<c-u>Hexplore<cr>
 nnoremap <silent> <leader>nv :<c-u>Vexplore!<cr>
+
+" Lightline configuration
+let g:lightline = {
+    \ 'colorscheme': 'gruvbox',
+    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+    \ 'component_function': {
+    \   'coc_diagnostics' : 'LightlineCocDiagnostics',
+    \ },
+    \ 'active': {
+    \   'left': [   ['mode', 'paste' ],
+    \               ['readonly', 'filename', 'modified'] ],
+    \   'right': [  ['lineinfo'],
+    \               ['percent'],
+    \               ['fileformat', 'fileencoding', 'filetype'] ]
+    \ }
+    \ }
+
+function! LightlineCocDiagnostics() abort
+    let info = get(b:, 'coc_diagnostic_info',0)
+    if empty(info)
+        return ''
+    endif
+    if get(info, 'error', 0) == 0
+        let error = ''
+    else
+        let error = printf('%s %d',"\ue963",info['error'])
+    endif
+    if get(info, 'warning', 0) == 0
+        let warning = ''
+    else
+        let warning = printf('%s %d',"\uea37",info['warning'])
+    endif
+    return printf('%s %s',error,warning)
+endfunction
+    
+autocmd User CocDiagnosticChange call lightline#update()
 
 " Settings for coc.nvim
 set cmdheight=2 "two lines for under statusline
