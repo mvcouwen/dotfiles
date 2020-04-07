@@ -116,7 +116,7 @@ inoremap <silent><expr> <S-TAB>
     \ "\<C-h>"
 
 " Use TAB to put the selected text into the visual placeholder
-vmap <TAB> <Plug>(coc-snippets-select)
+vmap <TAB> <plug>(coc-snippets-select)
 
 " Use <cr> to confirm completion. '<C-g>u' means break undo chain at current
 " position.
@@ -130,10 +130,10 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <plug>(coc-definition)
+nmap <silent> gy <plug>(coc-type-definition)
+nmap <silent> gi <plug>(coc-implementation)
+nmap <silent> gr <plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -150,11 +150,11 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rn <plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  <plug>(coc-format-selected)
+nmap <leader>f  <plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -165,23 +165,23 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>a  <plug>(coc-codeaction-selected)
+nmap <leader>a  <plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ac  <plug>(coc-codeaction)
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>qf  <plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
+xmap if <plug>(coc-funcobj-i)
+xmap af <plug>(coc-funcobj-a)
+omap if <plug>(coc-funcobj-i)
+omap af <plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+nmap <silent> <C-d> <plug>(coc-range-select)
+xmap <silent> <C-d> <plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -199,14 +199,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics
 nnoremap <silent> <leader>e :<C-u>CocList --normal diagnostics<cr>
 " Jump to next diagnostic
-nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>j <plug>(coc-diagnostic-next)
 " Jump to previous diagnostic
-nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>k <plug>(coc-diagnostic-prev)
 
-" Build file (define <Plug>(build) based on filetype)
+" Build file (define <plug>(build) based on filetype)
 nmap <leader>b <plug>(build)
 
-let g:coc_global_extensions = ["coc-snippets","coc-texlab"]
+" Execute (define <plug>(execute) based on filetype)
+nmap <leader>x <plug>(execute)
+vmap <leader>x <plug>(execute)
+
+" View output (define <plug>(view) based on filetype)
+nmap <leader>v <plug>(view)
+
+let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python"]
 let g:coc_user_config = {
     \ 'latex.build.args': ["-pdf","-pv","-e","$pdf_previewer=q/Open -g -a Skim/","-synctex=1","-interaction=nonstopmode"],
     \ 'latex.forwardSearch.executable': '/Applications/Skim.app/Contents/SharedSupport/displayline',
@@ -258,8 +265,15 @@ let &t_ZR="\e[23m"
 augroup tex_config
     autocmd!
     autocmd User VimtexEventQuit call vimtex#compiler#clean(0)
-    autocmd FileType tex nnoremap <buffer><silent> <Plug>(build) :CocCommand latex.Build<CR>
-    autocmd FileType tex nnoremap <buffer><silent> <leader>v :CocCommand latex.ForwardSearch<CR>
+    autocmd FileType tex nnoremap <buffer><silent> <plug>(build) :CocCommand latex.Build<CR>
+    autocmd FileType tex nnoremap <buffer><silent> <plug>(view) :CocCommand latex.ForwardSearch<CR>
+augroup END
+
+augroup python_config
+    autocmd!
+    autocmd FileType python nnoremap <buffer><silent> <plug>(execute) :CocCommand python.execInTerminal<CR>
+    autocmd FileType python vnoremap <buffer><silent> <plug>(execute) :CocCommand python.execSelectionInTerminal<CR>
+    autocmd FileType python nnoremap <buffer><silent> <plug>(view) :CocCommand python.viewOutput<CR>
 augroup END
 
 """ Magma commands
