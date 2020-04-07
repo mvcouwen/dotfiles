@@ -27,15 +27,20 @@ We manage our vim plugins with [vim-plug](https://github.com/junegunn/vim-plug).
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-Install a the homebrew version of vim for python support.
+Install neovim.
 ```sh
-brew install vim
+brew install neovim
 ```
 
 Install node and the latest stable nodejs (needed for coc.nvim).
 ```sh
 brew install node
 curl -sL install-node.now.sh | sh
+```
+
+Make sure you use a terminal emulator that supports true color, e.g. iTerm2.
+```sh
+brew cask install iterm2
 ```
 
 ## Installation
@@ -49,6 +54,7 @@ Make the necessary symbolic links.
 ```sh
 ln -s ~/.dotfiles/zshrc ~/.zshrc
 ln -s ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 mkdir -p ~/.config/nvim
 ln -s ~/.dotfiles/init.vim ~/.config/nvim/init.vim
 ```

@@ -1,5 +1,5 @@
-export TERM="xterm-256color"
-export LC_ALL=en_US.UTF-8
+#export TERM="xterm-256color"
+#export LC_ALL=en_US.UTF-8
 # Add Homebrew's sbin to path
 export PATH="/usr/local/sbin:$PATH"
 alias vim="mvim -v"
