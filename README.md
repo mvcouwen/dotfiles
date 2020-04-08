@@ -4,23 +4,16 @@ This repository contains configurations files for zsh and vim.
 
 ## Required packages
 
-We use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) to configure zsh.
-
+We use [prezto](https://github.com/sorin-ionesco/prezto) to configure zsh.
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
 ```
 
 Install one of the [nerd fonts](https://nerdfonts.com).
-
-We use [powerlevel10k](https://github.com/romkatv/powerlevel10k) as a theme in oh-my-zsh.
-```sh
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-```
-
-Install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) as a plugin for oh-my-zsh.
-```sh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
 
 We manage our vim plugins with [vim-plug](https://github.com/junegunn/vim-plug).
 ```sh
