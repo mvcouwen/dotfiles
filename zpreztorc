@@ -1,0 +1,51 @@
+#
+# Sets Prezto options.
+#
+# See ~/.zprezto/runcoms/zpreztorc for an example
+
+
+# Color output
+zstyle ':prezto:*:*' color 'yes'
+
+# Set the Prezto modules to load.
+# See ~/.prezto/modules/README.md for more information on each module.
+# The order matters.
+zstyle ':prezto:load' pmodule \
+    'environment' \
+    'terminal' \
+    'editor' \
+    'history' \
+    'spectrum' \
+    'utility' \
+    'completion' \
+    'git' \
+    'gpg' \
+    'syntax-highlighting' \
+    'history-substring-search' \
+    'prompt'
+
+# Set options for each module.
+
+#
+# TERMINAL
+#
+# Auto set the terminal window and tab title to current command or directory
+zstyle ':prezto:module:terminal' auto-title 'yes'
+
+#
+# EDITOR
+#
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+#
+# GIT
+#
+# Disable git aliases (enabled by default)
+zstyle ':prezto:module:git:alias' skip 'yes'
+
+#
+# PROMPT
+#
+# Set the prompt theme to load.
+zstyle ':prezto:module:prompt' theme 'sorin'
