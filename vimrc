@@ -9,6 +9,10 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 Plug 'morhetz/gruvbox'
 
+Plug 'ayu-theme/ayu-vim'
+
+Plug 'lifepillar/vim-solarized8'
+
 Plug 'itchyny/lightline.vim'
 set laststatus=2
 set noshowmode
@@ -29,11 +33,14 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 " Initialize plugin system
 call plug#end()
 
-colorscheme gruvbox
 set termguicolors
+set background=dark
+colorscheme gruvbox
 set guifont=Hack\ Nerd\ Font
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -51,15 +58,15 @@ set hidden " make buffers work better
 set backspace=2 " make backspace work across lines
 set number
 
+" netrw settings
 let g:netrw_liststyle=3
 let g:netrw_banner=0
-
 nnoremap <silent> <leader>nn :<c-u>Hexplore<cr>
 nnoremap <silent> <leader>nv :<c-u>Vexplore!<cr>
 
 " Lightline configuration
 let g:lightline = {
-    \ 'colorscheme': 'gruvbox',
+    \ 'colorscheme' : 'gruvbox',
     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
     \ 'component_function': {
