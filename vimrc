@@ -17,6 +17,8 @@ Plug 'itchyny/lightline.vim'
 set laststatus=2
 set noshowmode
 
+Plug 'itchyny/vim-gitbranch'
+
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = {
@@ -30,8 +32,6 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'airblade/vim-gitgutter'
-
-Plug 'tpope/vim-fugitive'
 
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -71,17 +71,27 @@ let g:lightline = {
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
     \ 'component_function': {
     \   'coc_diagnostics' : 'LightlineCocDiagnostics',
-    \   'fugitive' : 'FugitiveHead',
+    \   'gitinfo' : 'GitInfo',
     \ },
     \ 'active': {
     \   'left': [   ['mode', 'paste' ],
-    \               ['fugitive', 'readonly', 'filename', 'modified'],
+    \               ['gitinfo', 'readonly', 'filename', 'modified'],
     \               [] ],
     \   'right': [  ['lineinfo'],
     \               ['percent'],
     \               ['fileformat', 'fileencoding', 'filetype'] ]
     \ }
     \ }
+
+function! GitInfo() abort
+    let branchname = gitbranch#name()
+    let [a,m,r] = GitGutterGetHunkSummary()
+    if empty(branchname)
+        return ''
+    else
+        return printf('%s +%d ~%d -%d',branchname,a,m,r)
+    endif
+endfunction
 
 function! LightlineCocDiagnostics() abort
     let info = get(b:, 'coc_diagnostic_info',0)
@@ -104,7 +114,7 @@ endfunction
 autocmd User CocDiagnosticChange call lightline#update()
 
 " Settings for coc.nvim
-set cmdheight=2 "two lines for under statusline
+set cmdheight=1 "one line for under statusline
 set updatetime=500 "time vim waits before triggering plugin, standard 4000, too low can lead to highlighting glitches.
 set signcolumn=yes "sign column left of line numbers
 
