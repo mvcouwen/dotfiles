@@ -15,6 +15,7 @@ Plug 'lifepillar/vim-solarized8'
 
 Plug 'itchyny/lightline.vim'
 set laststatus=2
+set showtabline=2
 set noshowmode
 
 Plug 'itchyny/vim-gitbranch'
@@ -66,6 +67,10 @@ nnoremap <silent> <leader>nv :<c-u>Vexplore!<cr>
 
 " Lightline configuration
 let g:lightline = {
+    \ 'enable': {
+    \   'statusline': 1,
+    \   'tabline': 1
+    \ },
     \ 'colorscheme' : 'gruvbox',
     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
