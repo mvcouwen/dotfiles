@@ -39,7 +39,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " Initialize plugin system
 call plug#end()
 
-set termguicolors
+if $COLORTERM == "truecolor" || $COLORTERM == "24bit"
+    set termguicolors
+endif
 set background=dark
 colorscheme gruvbox
 set guifont=Hack\ Nerd\ Font
