@@ -9,13 +9,9 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 Plug 'morhetz/gruvbox'
 
-Plug 'ayu-theme/ayu-vim'
-
-Plug 'lifepillar/vim-solarized8'
-
 Plug 'itchyny/lightline.vim'
 set laststatus=2
-set showtabline=2
+set showtabline=1
 set noshowmode
 
 Plug 'itchyny/vim-gitbranch'
@@ -69,11 +65,8 @@ nnoremap <silent> <leader>nv :<c-u>Vexplore!<cr>
 
 " Lightline configuration
 let g:lightline = {
-    \ 'enable': {
-    \   'statusline': 1,
-    \   'tabline': 1
-    \ },
-    \ 'colorscheme' : 'gruvbox',
+    \ 'enable': {'statusline': 1, 'tabline': 1},
+    \ 'colorscheme': 'gruvbox',
     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
     \ 'component_function': {
@@ -87,7 +80,10 @@ let g:lightline = {
     \   'right': [  ['lineinfo'],
     \               ['percent'],
     \               ['fileformat', 'fileencoding', 'filetype'] ]
-    \ }
+    \ },
+    \ 'tabline': {'right': [[]]},
+    \ 'tabline_separator': {'left':"\ue0b0",'right':''},
+    \ 'tabline_subseparator': {'left':'\ue0b1','right':''}
     \ }
 
 function! GitInfo() abort
@@ -119,6 +115,61 @@ function! LightlineCocDiagnostics() abort
 endfunction
     
 autocmd User CocDiagnosticChange call lightline#update()
+
+" Define lightline colorscheme
+" This is heavily :based on the lightline colorscheme from morhetz/gruvbox
+function! s:getGruvColor(group)
+  let guiColor = synIDattr(hlID(a:group), "fg", "gui") 
+  let termColor = synIDattr(hlID(a:group), "fg", "cterm") 
+  return [ guiColor, termColor ]
+endfunction
+
+let s:bg0 = s:getGruvColor('GruvboxBg0')
+let s:bg1 = s:getGruvColor('GruvboxBg1')
+let s:bg2 = s:getGruvColor('GruvboxBg2')
+let s:bg3 = s:getGruvColor('GruvboxBg3')
+let s:bg4 = s:getGruvColor('GruvboxBg4')
+let s:fg1 = s:getGruvColor('GruvboxFg1')
+let s:fg4 = s:getGruvColor('GruvboxFg4')
+
+let s:yellow = s:getGruvColor('GruvboxYellow')
+let s:purple = s:getGruvColor('GruvboxPurple')
+let s:aqua = s:getGruvColor('GruvboxAqua')
+let s:red = s:getGruvColor('GruvboxRed')
+let s:green = s:getGruvColor('GruvboxGreen')
+let s:orange= s:getGruvColor('GruvboxOrange')
+let s:blue= s:getGruvColor('GruvboxBlue')
+
+let s:p = {'normal':{}, 'inactive':{}, 'command':{}, 'insert':{}, 'replace':{}, 'visual':{}, 'tabline':{}, 'terminal':{}}
+let s:p.normal.left = [ [ s:bg0, s:aqua, 'bold' ], [ s:fg4, s:bg2 ] ]
+let s:p.normal.right = [ [ s:bg0, s:aqua ], [ s:fg4, s:bg2 ] ]
+let s:p.normal.middle = [ [ s:fg4, s:bg1 ] ]
+let s:p.inactive.right = [ [ s:bg4, s:bg1 ], [ s:bg4, s:bg1 ] ]
+let s:p.inactive.left =  [ [ s:bg4, s:bg1 ], [ s:bg4, s:bg1 ] ]
+let s:p.inactive.middle = [ [ s:bg4, s:bg1 ] ]
+let s:p.command.left = [ [ s:bg0, s:blue, 'bold' ], [ s:fg1, s:bg3 ] ]
+let s:p.command.right = [ [ s:bg0, s:blue], [ s:fg1, s:bg3 ] ]
+let s:p.command.middle = [ [ s:fg4, s:bg2 ] ]
+let s:p.insert.left = [ [ s:bg0, s:green, 'bold' ], [ s:fg1, s:bg3 ] ]
+let s:p.insert.right = [ [ s:bg0, s:green ], [ s:fg1, s:bg3 ] ]
+let s:p.insert.middle = [ [ s:fg4, s:bg2 ] ]
+let s:p.terminal.left = [ [ s:bg0, s:purple, 'bold' ], [ s:fg1, s:bg3 ] ]
+let s:p.terminal.right = [ [ s:bg0, s:purple], [ s:fg1, s:bg3 ] ]
+let s:p.terminal.middle = [ [ s:fg4, s:bg2 ] ]
+let s:p.replace.left = [ [ s:bg0, s:red, 'bold' ], [ s:fg1, s:bg3 ] ]
+let s:p.replace.right = [ [ s:bg0, s:red], [ s:fg1, s:bg3 ] ]
+let s:p.replace.middle = [ [ s:fg4, s:bg2 ] ]
+let s:p.visual.left = [ [ s:bg0, s:yellow, 'bold' ], [ s:fg1, s:bg3 ] ]
+let s:p.visual.right = [ [ s:bg0, s:yellow], [ s:fg1, s:bg3 ] ]
+let s:p.visual.middle = [ [ s:fg4, s:bg2 ] ]
+let s:p.tabline.left = [ [ s:fg4, s:bg2 ] ]
+let s:p.tabline.tabsel = [ [ s:bg0, s:yellow ] ]
+let s:p.tabline.middle = [ [ s:fg4, s:bg1 ] ]
+let s:p.tabline.right = [ [ s:fg4, s:bg1 ] ]
+let s:p.normal.error = [ [ s:bg0, s:red] ]
+let s:p.normal.warning = [ [ s:bg0, s:orange] ]
+
+let g:lightline#colorscheme#gruvbox#palette = lightline#colorscheme#flatten(s:p) "flatten makes pairs of pairs into quadruples
 
 " Settings for coc.nvim
 set cmdheight=1 "one line for under statusline
