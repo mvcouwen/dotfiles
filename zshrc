@@ -5,3 +5,6 @@ export PATH="/usr/local/sbin:$PATH"
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+# Aliases
+alias l="ls -lah"
