@@ -46,6 +46,7 @@ git clone https://github.com/mvcouwen/dotfiles.git ~/.dotfiles
 Make the necessary symbolic links.
 ```sh
 ln -s ~/.dotfiles/zshrc ~/.zshrc
+ln -s ~/.dotfiles/zpreztorc ~/.zpreztorc
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 mkdir -p ~/.config/nvim

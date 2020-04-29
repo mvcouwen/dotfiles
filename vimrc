@@ -285,7 +285,7 @@ vmap <leader>x <plug>(execute)
 " View output (define <plug>(view) based on filetype)
 nmap <leader>v <plug>(view)
 
-let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python@1.2.9"]
+let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python"]
 let g:coc_user_config = {
     \ 'latex.build.args': ["-pdf","-pv","-e","$pdf_previewer=q/Open -g -a Skim/","-synctex=1","-interaction=nonstopmode"],
     \ 'latex.forwardSearch.executable': '/Applications/Skim.app/Contents/SharedSupport/displayline',
