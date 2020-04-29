@@ -175,6 +175,7 @@ let g:lightline#colorscheme#gruvbox#palette = lightline#colorscheme#flatten(s:p)
 set cmdheight=1 "one line for under statusline
 set updatetime=500 "time vim waits before triggering plugin, standard 4000, too low can lead to highlighting glitches.
 set signcolumn=yes "sign column left of line numbers
+set shortmess+=c "don't pass messages to ins-completion-menu, i.e. do not show `match n of m'
 
 " Implement the use of the TAB-key.
 " If pum is visible, then complete.
