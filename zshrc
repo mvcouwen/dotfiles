@@ -3,8 +3,8 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Set locale variables
 export LANG="en_US.UTF-8"
-export LC_COLLATE="C.UTF-8" # Reset to default instead of LANG
-export LC_NUMBERIC="C.UTF-8" # Reset to default instead of LANG
+export LC_COLLATE="C" # Reset to default instead of LANG
+export LC_NUMBERIC="C" # Reset to default instead of LANG
 export LC_MONETARY="nl_BE.UTF-8"
 export LC_PAPER="nl_BE.UTF-8"
 export LC_TIME="nl_BE.UTF-8"
