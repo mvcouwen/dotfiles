@@ -286,47 +286,6 @@ vmap <leader>x <plug>(execute)
 nmap <leader>v <plug>(view)
 
 let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python"]
-let g:coc_user_config = {
-    \ 'latex.build.args': ["-pdf","-pv","-e","$pdf_previewer=q/Open -g -a Skim/","-synctex=1","-interaction=nonstopmode"],
-    \ 'latex.forwardSearch.executable': '/Applications/Skim.app/Contents/SharedSupport/displayline',
-    \ 'latex.forwardSearch.args': ["-g","%l", "%p", "%f"],
-    \ 'diagnostic.messageTarget': 'float',
-    \ 'diagnostic.errorSign': ">>",
-    \ 'diagnostic.warningSign': "--",
-    \ 'diagnostic.infoSign': "--",
-    \ 'diagnostic.hintSign': "--",
-    \ 'suggest.disableMenu': v:false,
-    \ 'suggest.disableMenuShortcut': v:false,
-    \ 'suggest.detailField': "preview",
-    \ 'suggest.completionItemKindLabels': {
-    \   'text': "\uea0e",
-    \   'method': "\uea10",
-    \   'function': "\uea10",
-    \   'constructor': "\uea10",
-    \   'field': "\uea0b",
-    \   'variable': "\uea1b",
-    \   'class': "\uea05",
-    \   'interface': "\ea0d",
-    \   'module': "\uea12",
-    \   'property': "\uea16",
-    \   'unit': "\uea17",
-    \   'value': "\uea09",
-    \   'enum': "\uea09",
-    \   'keyword': "\uea0f",
-    \   'snippet': "\uea18",
-    \   'color': "\uea06",
-    \   'file': "\uea0c",
-    \   'reference': "\ue989",
-    \   'folder': "\ue97c",
-    \   'enumMember': "\uea08",
-    \   'constant': "\uea07",
-    \   'struct': "\uea1a",
-    \   'event': "\uea0a",
-    \   'operator': "\uea14",
-    \   'typeParameter': "\uea16",
-    \   'default': "\uea11",
-    \ }
-    \ }
 
 " Enable italics
 let &t_ZH="\e[3m"
