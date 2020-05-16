@@ -25,10 +25,9 @@ Install neovim.
 brew install neovim
 ```
 
-Install node and the latest stable nodejs (needed for coc.nvim).
+Install node (needed for coc.nvim).
 ```sh
 brew install node
-curl -sL install-node.now.sh | sh
 ```
 
 Make sure you use a terminal emulator that supports true color, e.g. iTerm2.
