@@ -117,7 +117,8 @@ endfunction
 autocmd User CocDiagnosticChange call lightline#update()
 
 " Define lightline colorscheme
-" This is heavily :based on the lightline colorscheme from morhetz/gruvbox
+" This is heavily based on the lightline colorscheme from
+" https://github.com/morhetz/gruvbox
 function! s:getGruvColor(group)
   let guiColor = synIDattr(hlID(a:group), "fg", "gui") 
   let termColor = synIDattr(hlID(a:group), "fg", "cterm") 
