@@ -307,6 +307,8 @@ augroup tex_config
     autocmd FileType tex nnoremap <buffer><silent> <plug>(view) :CocCommand latex.ForwardSearch<CR>
 augroup END
 
+""" Python commands
+
 augroup python_config
     autocmd!
     autocmd FileType python nnoremap <buffer><silent> <plug>(execute) :CocCommand python.execInTerminal<CR>
