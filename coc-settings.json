@@ -37,6 +37,7 @@
     },
     "latex.build.args": ["-pdf","-pv","-e","$pdf_previewer=q/Open -g -a Skim/","-synctex=1","-interaction=nonstopmode","%f"],
     "latex.forwardSearch.executable": "/Applications/Skim.app/Contents/SharedSupport/displayline",
-    "latex.forwardSearch.args": ["-g","%l", "%p", "%f"]
+    "latex.forwardSearch.args": ["-g","%l", "%p", "%f"],
+    "snippets.ultisnips.enable": false
 }
 

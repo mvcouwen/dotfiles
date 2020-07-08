@@ -32,6 +32,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+Plug 'benmills/vimux'
+
 " Initialize plugin system
 call plug#end()
 
@@ -62,6 +64,7 @@ let g:netrw_liststyle=3
 let g:netrw_banner=0
 nnoremap <silent> <leader>nn :<c-u>Hexplore<cr>
 nnoremap <silent> <leader>nv :<c-u>Vexplore!<cr>
+nnoremap <silent> <leader>nt :<c-u>Texplore<cr>
 
 " Lightline configuration
 let g:lightline = {
@@ -192,6 +195,9 @@ inoremap <silent><expr> <S-TAB>
     \ coc#jumpable() ? "\<C-r>=coc#rpc#request('snippetPrev',[])\<CR>" :
     \ "\<C-h>"
 
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+
 " Use TAB to put the selected text into the visual placeholder
 vmap <TAB> <plug>(coc-snippets-select)
 
@@ -286,7 +292,7 @@ vmap <leader>x <plug>(execute)
 " View output (define <plug>(view) based on filetype)
 nmap <leader>v <plug>(view)
 
-let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python"]
+let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python","coc-java"]
 
 " Enable italics
 let &t_ZH="\e[3m"
@@ -306,6 +312,11 @@ augroup python_config
     autocmd FileType python nnoremap <buffer><silent> <plug>(execute) :CocCommand python.execInTerminal<CR>
     autocmd FileType python vnoremap <buffer><silent> <plug>(execute) :CocCommand python.execSelectionInTerminal<CR>
     autocmd FileType python nnoremap <buffer><silent> <plug>(view) :CocCommand python.viewOutput<CR>
+augroup END
+
+augroup java_config
+    autocmd!
+    autocmd FileType java nnoremap <buffer><silent> <plug>(execute) :call VimuxRunCommand("javac " . bufname("%") . " && " . "java " . expand("%:t:r"))<CR>
 augroup END
 
 """ Magma commands
