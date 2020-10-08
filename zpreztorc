@@ -21,7 +21,8 @@ zstyle ':prezto:load' pmodule \
     'git' \
     'syntax-highlighting' \
     'history-substring-search' \
-    'prompt'
+    'prompt' \
+    'ssh'
 
 # Set options for each module.
 
@@ -48,3 +49,9 @@ zstyle ':prezto:module:git:alias' skip 'yes'
 #
 # Set the prompt theme to load.
 zstyle ':prezto:module:prompt' theme 'sorin'
+
+# Local configuration
+# Keep this at the bottom
+if [[ -s "${ZDOTDIR:-$HOME}/.zpreztorc.local" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zpreztorc.local"
+fi
