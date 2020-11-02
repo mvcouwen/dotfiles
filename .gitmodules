@@ -1,0 +1,4 @@
+[submodule "modules/pure"]
+	path = modules/pure
+	url = https://github.com/sindresorhus/pure
+	branch = master

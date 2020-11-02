@@ -6,6 +6,10 @@ export LC_MONETARY="nl_BE.UTF-8"
 export LC_PAPER="nl_BE.UTF-8"
 export LC_TIME="en_US.UTF-8"
 
+fpath+=$HOME/.dotfiles/modules/pure
+autoload -U promptinit; promptinit
+prompt pure
+
 # Load local configuration
 # Keep this at the bottom
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.local" ]]; then
