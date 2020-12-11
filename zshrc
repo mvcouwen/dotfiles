@@ -9,6 +9,7 @@ export LC_TIME="en_US.UTF-8"
 fpath+=$HOME/.dotfiles/modules/pure
 autoload -U promptinit; promptinit
 prompt pure
+zstyle :prompt:pure:git:dirty color 242
 
 # Load local configuration
 # Keep this at the bottom
