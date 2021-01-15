@@ -1,0 +1,32 @@
+# Set locale variables
+export LANG="en_US.UTF-8"
+export LC_COLLATE="C" # Reset to default instead of LANG
+export LC_NUMBERIC="C" # Reset to default instead of LANG
+export LC_MONETARY="nl_BE.UTF-8"
+export LC_PAPER="nl_BE.UTF-8"
+export LC_TIME="en_US.UTF-8"
+
+# aliases
+source ~/.dotfiles/zsh/aliases.zsh
+
+# pure
+fpath+=~/.dotfiles/zsh/modules/pure
+autoload -U promptinit; promptinit
+prompt pure
+zstyle :prompt:pure:git:dirty color 242
+
+# zsh-autosuggestions
+autoload compinit; compinit
+source ~/.dotfiles/zsh/modules/autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+bindkey '\t' autosuggest-accept
+
+# zsh-syntax-highlighting (must be sourced after everything else)
+source ~/.dotfiles/zsh/modules/syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load local configuration
+# Keep this at the bottom
+if [[ -s "~/.zshrc.local" ]]; then
+    source "~/.zshrc.local"
+fi
