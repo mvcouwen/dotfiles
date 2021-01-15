@@ -9,11 +9,18 @@ export LC_TIME="en_US.UTF-8"
 # aliases
 source ~/.dotfiles/zsh/aliases.zsh
 
+# enable vi-mode
+bindkey -v
+# make backspace behave is in vim, not vi
+bindkey -v '^?' backward-delete-char
+
 # pure
 fpath+=~/.dotfiles/zsh/modules/pure
 autoload -U promptinit; promptinit
 prompt pure
 zstyle :prompt:pure:git:dirty color 242
+PURE_PROMPT_SYMBOL="%(?.%F{red}❯%f%F{yellow}❯%f%F{green}❯%f.❯❯❯)"
+PURE_PROMPT_VICMD_SYMBOL="%(?.%F{green}❮%f%F{yellow}❮%f%F{red}❮%f.❮❮❮)"
 
 # zsh-autosuggestions
 autoload compinit; compinit
