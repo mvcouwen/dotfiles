@@ -14,6 +14,9 @@ bindkey -v
 # make backspace behave is in vim, not vi
 bindkey -v '^?' backward-delete-char
 
+# register GPG_TTY
+export GPG_TTY=$(tty)
+
 # pure
 fpath+=~/.dotfiles/zsh/modules/pure
 autoload -U promptinit; promptinit
