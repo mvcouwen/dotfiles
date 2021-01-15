@@ -3,5 +3,8 @@
 	url = https://github.com/sindresorhus/pure
 	branch = master
 [submodule "modules/zsh-syntax-highlighting"]
-	path = modules/zsh-syntax-highlighting
+	path = modules/syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/modules/autosuggestions"]
+	path = zsh/modules/autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
