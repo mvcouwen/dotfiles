@@ -26,7 +26,7 @@ let g:vimtex_view_method = 'skim'
 
 Plug 'honza/vim-snippets'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim'
 
 Plug 'airblade/vim-gitgutter'
 
