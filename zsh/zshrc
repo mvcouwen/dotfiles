@@ -17,6 +17,9 @@ bindkey -v '^?' backward-delete-char
 # register GPG_TTY
 export GPG_TTY=$(tty)
 
+# add homebrew sbin to path
+export PATH="/usr/local/sbin:$PATH"
+
 # pure
 fpath+=~/.dotfiles/zsh/modules/pure
 autoload -U promptinit; promptinit
