@@ -107,12 +107,12 @@ function! LightlineCocDiagnostics() abort
     if get(info, 'error', 0) == 0
         let error = ''
     else
-        let error = printf('%s %d',"\ue963",info['error'])
+        let error = printf('%s %d',"",info['error'])
     endif
     if get(info, 'warning', 0) == 0
         let warning = ''
     else
-        let warning = printf('%s %d',"\uea37",info['warning'])
+        let warning = printf('%s %d',"",info['warning'])
     endif
     return printf('%s %s',error,warning)
 endfunction
