@@ -182,16 +182,13 @@ set signcolumn=yes "sign column left of line numbers
 set shortmess+=c "don't pass messages to ins-completion-menu, i.e. do not show `match n of m'
 
 " Implement the use of the TAB-key.
-" If pum is visible, then complete.
-" If not but inside jumpable snippet, go to next placeholder.
-" If none of the above insert a <TAB> character.
+" If inside jumpable snippet, go to next placeholder.
+" If not, insert a <TAB> character.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
       \ coc#jumpable() ? "\<C-r>=coc#rpc#request('snippetNext',[])\<CR>" :
       \ "\<TAB>"
 
 inoremap <silent><expr> <S-TAB>
-    \ pumvisible() ? "\<C-p>" :
     \ coc#jumpable() ? "\<C-r>=coc#rpc#request('snippetPrev',[])\<CR>" :
     \ "\<C-h>"
 

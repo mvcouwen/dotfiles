@@ -7,6 +7,8 @@
     "suggest.disableMenu": false,
     "suggest.disableKind": false,
     "suggest.detailField": "preview",
+    "suggest.noselect": false,
+    "suggest.fixInsertedWord": false,
     "suggest.completionItemKindLabels": {
         "text": " ",
         "method": " ",
