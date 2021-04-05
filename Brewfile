@@ -1,0 +1,11 @@
+tap "homebrew/core"
+tap "homebrew/cask"
+
+brew "htop"
+brew "git"
+brew "neovim"
+cask "iterm2"
+cask "alfred"
+cask "rectangle"
+cask "intellij-idea"
+cask "skim"
