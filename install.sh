@@ -188,19 +188,19 @@ install_or_upgrade() {
     fi
 }
 
-#install_or_upgrade --cask alfred
-#install_or_upgrade --cask font-hack-nerd-font
-#install_or_upgrade git
-#install_or_upgrade gnupg
-#install_or_upgrade htop
-#install_or_upgrade --cask iterm2
-#install_or_upgrade jq
-#install_or_upgrade neovim
-#install_or_upgrade node
-#install_or_upgrade python
-#install_or_upgrade --cask rectangle
-#install_or_upgrade tmux
-#install_or_upgrade zsh
+install_or_upgrade --cask alfred
+install_or_upgrade --cask font-hack-nerd-font
+install_or_upgrade git
+install_or_upgrade gnupg
+install_or_upgrade htop
+install_or_upgrade --cask iterm2
+install_or_upgrade jq
+install_or_upgrade neovim
+install_or_upgrade node
+install_or_upgrade python
+install_or_upgrade --cask rectangle
+install_or_upgrade tmux
+install_or_upgrade zsh
 
 
 log_info "Downloading dotfiles... This may require your GitHub password."
@@ -218,10 +218,11 @@ if [ -z ${PREFIX-} ]; then
 fi
 
 if [ -z ${REMOTE-} ]; then
-    REMOTE="https://git@github.com/mvcouwen/dotfiles.git"
+    REMOTE="https://github.com/mvcouwen/dotfiles.git"
 fi
 
 update_dotfiles() {
+    check_git
     run $GIT "-C $PREFIX" init "-q"
     run $GIT "-C $PREFIX" config remote.origin.url "$REMOTE" &&
     run $GIT "-C $PREFIX" config remote.origin.fetch "refs/heads/*:refs/remotes/origin/*" &&
@@ -285,100 +286,38 @@ link_dotfile "vim/init.vim" ".config/nvim/init.vim"
 link_dotfile "vim/coc-settings.json" ".config/coc-settings.json"
 link_dotfile "tmux.conf" ".tmux.conf"
 
-log_info "Installing vim-plug..."
-
-check_curl
-if ! run $CURL -fLo '~/.vim/autoload/plug.vim' --create-dirs \
-    'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' >/dev/null 2>&1
-then
-    exit_error "Failed to install vim-plug."
-fi
-
-check_nvim() {
-    if ! NVIM=`command -v /usr/local/bin/nvim`; then
-        log_warn "Unable to find neovim installation. Skipping the installation of vim plugins."
-        false
-        return
+check_tic() {
+    if ! TIC=`command -v /usr/bin/tic`; then
+        log_warn "Unable to find tic. Skipping installation of tmux terminfo."
+        false; return
     fi
 }
 
-log_info "Installing vim plugins..."
+check_gunzip() {
+    if ! GUNZIP=`command -v /usr/bin/gunzip`; then
+        log_warn "unable to find gunzip. skipping installation of tmux terminfo."
+        false; return
+    fi
+}
 
-if check_nvim; then
-    run $NVIM -c ":PlugInstall"
-fi
-#run nvim +'PlugInstall --sync' +qa
-#run nvim +'CocInstall' +qa
-#run nvim +'so http://www.drchip.org/astronaut/vim/vbafiles/amsmath.vba.gz'
+check_curl_warn() {
+    if ! CURL=`command -v curl`; then
+        log_warn "Unable to find curl. Skipping installation of tmux terminfo."
+        false; return
+    fi
+}
 
+compile_tmux_256color() {
+    if check_tic && check_curl && check_gunzip; then
+        run $CURL -LO -o ${PREFIX}/terminfo.src.gz https://invisible-island.net/datafiles/current/terminfo.src.gz &&
+        run $GUNZIP terminfo.src.gz
+        run $TIC -xe tmux-256color ${PREFIX}/terminfo.src
+        run rm ${PREFIX}/terminfo.src
+    fi
+}
 
-#setup_github() {
-#    read -p "GitHub username: " GIT_USER 
-#    read -p "GitHub name: " GIT_NAME
-#    read -p "GitHub e-mail: " GIT_EMAIL
-#}
-#
-#read -p "Do you wish to set up GitHub credentials [yN]? " yn
-#case $yn in
-#    [yY]*) setup_github;;
-#esac
+log_info "Compiling terminfo description for tmux."
 
-##!/bin/zsh
-#
-#run() {
-#    printf "%s..." $2
-#    $1
-#    printf "done%n"
-#}
-#
-#####################
-## Install Homebrew #
-#####################
-#
-#echo "Installing Homebrew..."
-#
-##/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-#brew bundle --file="$(pwd)/Brewfile"
-#
-#####################
-## Install vim-plug #
-#####################
-#
-#echo "Installing vim-plug..."
-#
-#curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#
-#############
-## Dotfiles #
-#############
-#
-#echo "Linking dotfiles..."
-#
-#cd $(dirname $0)
-#local date=$(date +%Y%m%d)
-#
-#declare -A dotfiles
-#dotfiles=(
-#    [~/.zshrc]="$(pwd)/zsh/zshrc"
-#    [~/.vimrc]="$(pwd)/vim/vimrc"
-#    [~/.config/nvim/init.vim]="$(pwd)/vim/init.vim"
-#    [~/.config/nvim/coc-settings.json]="$(pwd)/vim/coc-settings.json"
-#)
-#
-#for key val in ${(@kv)dotfiles}; do
-#    [ -e $key ] && [ ! -L $key ] && mv $key ${key}.backup.${date}
-#    [ -L $key ] && unlink $key
-#    mkdir -p $(dirname $key)
-#    ln -s $val $key
-#done
-#
-########################
-## Install vim plugins #
-########################
-#
-#echo "Installing vim plugins..."
-#nvim +'PlugInstall --sync' +qa
-#nvim +'CocInstall' +qa
-#nvim +'so http://www.drchip.org/astronaut/vim/vbafiles/amsmath.vba.gz'
+compile_tmux_256color
 
+log_info "Installation successful."
