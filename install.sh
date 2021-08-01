@@ -178,13 +178,15 @@ install_or_upgrade() {
     if run $BREW ls --version $@ >/dev/null; then
         if ! run $BREW upgrade $@; then
             log_warn "Failed to upgrade $@. Run \"brew upgrade $@\" to find out what goes wrong."
+        else
+            log_info "Succesfully upgraded $@."
         fi
-        log_info "Succesfully upgraded $@."
     else
         if ! run $BREW install $@; then
             log_warn "Failed to install $@. Run \"brew install $@\" to find out what goes wrong."
+        else
+            log_info "Succesfully installed $@."
         fi
-        log_info "Succesfully installed $@."
     fi
 }
 
@@ -223,19 +225,19 @@ fi
 
 update_dotfiles() {
     check_git
-    run $GIT "-C $PREFIX" init "-q"
-    run $GIT "-C $PREFIX" config remote.origin.url "$REMOTE" &&
-    run $GIT "-C $PREFIX" config remote.origin.fetch "refs/heads/*:refs/remotes/origin/*" &&
-    run $GIT "-C $PREFIX" fetch $FORCE_UPDATE origin &&
+    run $GIT "-C" "$PREFIX" init "-q"
+    run $GIT "-C" "$PREFIX" config remote.origin.url "$REMOTE" &&
+    run $GIT "-C" "$PREFIX" config remote.origin.fetch "refs/heads/*:refs/remotes/origin/*" &&
+    run $GIT "-C" "$PREFIX" fetch $FORCE_UPDATE origin &&
     if ! [ -z $FORCE_UPDATE ]; then
-        run $GIT "-C $PREFIX" reset "--hard" "--recurse-submodules" origin/master
+        run $GIT "-C" "$PREFIX" reset "--hard" "--recurse-submodules" origin/master
     else
         if ! [ -z "`$GIT -C $PREFIX status --porcelain`" ]; then
             log_warn "Failed to update dotfiles. The working directory is not clean."
             return
         fi
-        run $GIT "-C $PREFIX" checkout "-t" origin/master &&
-        run $GIT "-C $PREFIX" pull "--ff-only" "--recurse-submodules"
+        run $GIT "-C" "$PREFIX" checkout "-t" origin/master &&
+        run $GIT "-C" "$PREFIX" pull "--ff-only" "--recurse-submodules"
     fi
 }
 
@@ -283,7 +285,7 @@ link_dotfile() {
 link_dotfile "zsh/zshrc" ".zshrc"
 link_dotfile "vim/vimrc" ".vimrc"
 link_dotfile "vim/init.vim" ".config/nvim/init.vim"
-link_dotfile "vim/coc-settings.json" ".config/coc-settings.json"
+link_dotfile "vim/coc-settings.json" ".config/nvim/coc-settings.json"
 link_dotfile "tmux.conf" ".tmux.conf"
 
 check_tic() {
