@@ -204,36 +204,6 @@ install_or_upgrade --cask rectangle
 install_or_upgrade tmux
 install_or_upgrade zsh
 
-
-install_vimplug() {
-    if [ -f ~/.vim/autoload/plug.vim ]; then
-        return
-    fi
-    log_info "Installing vimplug..."
-    if ! check_curl || ! $CURL -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; then
-        exit_error "Failed to install vimplug. Please install vimplug manually."
-    fi
-}
-
-install_vimplug
-
-check_vim() {
-    if ! VIM=`command -v vim`; then
-        log_warn "Unable to find vim. Skipping installation of vim plugins."
-        false; return
-    fi
-}
-
-upgrade_vim_plugins() {
-    log_info "Updating and installing vim plugins..."
-    if check_vim; then
-        run $VIM "-E" "-s" "+PlugInstall" "+qall"
-    fi
-}
-
-upgrade_vim_plugins
-
 check_tic() {
     if ! TIC=`command -v /usr/bin/tic`; then
         log_warn "Unable to find tic. Skipping installation of tmux terminfo."
