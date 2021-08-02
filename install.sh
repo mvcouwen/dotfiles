@@ -205,6 +205,77 @@ install_or_upgrade tmux
 install_or_upgrade zsh
 
 
+install_vimplug() {
+    if [ -f ~/.vim/autoload/plug.vim ]; then
+        return
+    fi
+    log_info "Installing vimplug..."
+    if ! check_curl || ! $CURL -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; then
+        exit_error "Failed to install vimplug. Please install vimplug manually."
+    fi
+}
+
+install_vimplug
+
+check_vim() {
+    if ! VIM=`command -v vim`; then
+        log_warn "Unable to find vim. Skipping installation of vim plugins."
+        false; return
+    fi
+}
+
+upgrade_vim_plugins() {
+    log_info "Updating and installing vim plugins..."
+    if check_vim; then
+        run $VIM "-E" "-s" "+PlugInstall" "+qall"
+    fi
+}
+
+upgrade_vim_plugins
+
+check_tic() {
+    if ! TIC=`command -v /usr/bin/tic`; then
+        log_warn "Unable to find tic. Skipping installation of tmux terminfo."
+        false; return
+    fi
+}
+
+check_gunzip() {
+    if ! GUNZIP=`command -v /usr/bin/gunzip`; then
+        log_warn "unable to find gunzip. skipping installation of tmux terminfo."
+        false; return
+    fi
+}
+
+check_curl_warn() {
+    if ! CURL=`command -v curl`; then
+        log_warn "Unable to find curl. Skipping installation of tmux terminfo."
+        false; return
+    fi
+}
+
+check_infocmp() {
+    INFOCMP=`command -v /usr/bin/infocmp`
+}
+
+compile_tmux_256color() {
+    log_info "Checking terminfo description for tmux."
+    if check_infocmp && $INFOCMP tmux-256color >/dev/null 2>&1; then
+        return
+    fi
+    log_info "Compiling terminfo description for tmux."
+    if check_tic && check_curl && check_gunzip; then
+        run $CURL -LO -o ${PREFIX}/terminfo.src.gz https://invisible-island.net/datafiles/current/terminfo.src.gz &&
+        run $GUNZIP terminfo.src.gz &&
+        run $TIC -xe tmux-256color ${PREFIX}/terminfo.src
+        run rm ${PREFIX}/terminfo.src
+    fi
+}
+
+
+compile_tmux_256color
+
 log_info "Downloading dotfiles... This may require your GitHub password."
 
 check_git() {
@@ -288,38 +359,5 @@ link_dotfile "vim/init.vim" ".config/nvim/init.vim"
 link_dotfile "vim/coc-settings.json" ".config/nvim/coc-settings.json"
 link_dotfile "tmux.conf" ".tmux.conf"
 
-check_tic() {
-    if ! TIC=`command -v /usr/bin/tic`; then
-        log_warn "Unable to find tic. Skipping installation of tmux terminfo."
-        false; return
-    fi
-}
-
-check_gunzip() {
-    if ! GUNZIP=`command -v /usr/bin/gunzip`; then
-        log_warn "unable to find gunzip. skipping installation of tmux terminfo."
-        false; return
-    fi
-}
-
-check_curl_warn() {
-    if ! CURL=`command -v curl`; then
-        log_warn "Unable to find curl. Skipping installation of tmux terminfo."
-        false; return
-    fi
-}
-
-compile_tmux_256color() {
-    if check_tic && check_curl && check_gunzip; then
-        run $CURL -LO -o ${PREFIX}/terminfo.src.gz https://invisible-island.net/datafiles/current/terminfo.src.gz &&
-        run $GUNZIP terminfo.src.gz
-        run $TIC -xe tmux-256color ${PREFIX}/terminfo.src
-        run rm ${PREFIX}/terminfo.src
-    fi
-}
-
-log_info "Compiling terminfo description for tmux."
-
-compile_tmux_256color
 
 log_info "Installation successful."
