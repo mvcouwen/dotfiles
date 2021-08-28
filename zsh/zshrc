@@ -33,7 +33,20 @@ autoload compinit; compinit
 source ~/.dotfiles/zsh/modules/autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
-bindkey '\t' autosuggest-accept
+# make sure fzf-completion defaults to autosuggest-accept on tab
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(fzf-completion)
+fzf_default_completion=autosuggest-accept
+
+# fzf
+if [[ -f ~/.fzf.zsh ]]; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+else
+    if command -v brew >/dev/null 2>&1 && [[ -x $(brew --prefix)/opt/fzf/install ]]; then
+        $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc >/dev/null 2>&1
+        source ~/.fzf.zsh
+    fi
+fi
+
 
 # zsh-syntax-highlighting (must be sourced after everything else)
 source ~/.dotfiles/zsh/modules/syntax-highlighting/zsh-syntax-highlighting.zsh

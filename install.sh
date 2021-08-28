@@ -192,6 +192,7 @@ install_or_upgrade() {
 
 install_or_upgrade --cask alfred
 install_or_upgrade --cask font-hack-nerd-font
+install_or_upgrade fzf
 install_or_upgrade git
 install_or_upgrade gnupg
 install_or_upgrade htop
