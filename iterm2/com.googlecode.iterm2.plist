@@ -1463,6 +1463,8 @@
 	<integer>1</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>668383805.34201801</real>
+    <key>NoSyncPermissionToShowTip</key>
+    <false/>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
@@ -2239,6 +2241,8 @@
 	<real>668211005.34160995</real>
 	<key>OSAScriptingDefinition</key>
 	<string>iTerm2.sdef</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
