@@ -21,7 +21,7 @@ export GPG_TTY=$(tty)
 export PATH="/usr/local/sbin:$PATH"
 
 # pure
-fpath+=~/.dotfiles/zsh/modules/pure
+# fpath+=~/.dotfiles/zsh/modules/pure
 autoload -U promptinit; promptinit
 prompt pure
 zstyle :prompt:pure:git:dirty color 242
@@ -51,8 +51,22 @@ fi
 # zsh-syntax-highlighting (must be sourced after everything else)
 source ~/.dotfiles/zsh/modules/syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# pyenv
+if [[ -d "$HOME/.pyenv" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
+
+# jenv
+if [[ -d "$HOME/.jenv" ]]; then
+    export JENV_ROOT="$HOME/.jenv"
+    command -v jenv >/dev/null || export PATH="$JENV_ROOT/bin:$PATH"
+    eval "$(jenv init -)"
+fi
+
 # Load local configuration
 # Keep this at the bottom
-if [[ -s "~/.zshrc.local" ]]; then
-    source "~/.zshrc.local"
+if [[ -s "$HOME/.zshrc.local" ]]; then
+    source "$HOME/.zshrc.local"
 fi
