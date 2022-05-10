@@ -193,6 +193,7 @@ set shortmess+=c "don't pass messages to ins-completion-menu, i.e. do not show `
 " If inside jumpable snippet, go to next placeholder.
 " If not, insert a <TAB> character.
 inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-y>" :
       \ coc#jumpable() ? "\<C-r>=coc#rpc#request('snippetNext',[])\<CR>" :
       \ "\<TAB>"
 
