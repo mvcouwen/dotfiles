@@ -30,8 +30,9 @@ PURE_PROMPT_VICMD_SYMBOL="%(?.%F{green}❮%f%F{yellow}❮%f%F{red}❮%f.❮❮�
 
 # zsh-autosuggestions
 autoload compinit; compinit
+setopt nobeep
 source ~/.dotfiles/zsh/modules/autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+ZSH_AUTOSUGGEST_STRATEGY=(history)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 # make sure fzf-completion defaults to autosuggest-accept on tab
 ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(fzf-completion)
