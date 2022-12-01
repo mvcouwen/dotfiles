@@ -11,7 +11,7 @@ source ~/.dotfiles/zsh/aliases.zsh
 
 # enable vi-mode
 bindkey -v
-# make backspace behave is in vim, not vi
+# make backspace behave as in vim, not vi
 bindkey -v '^?' backward-delete-char
 
 # register GPG_TTY
@@ -21,28 +21,30 @@ export GPG_TTY=$(tty)
 export PATH="/usr/local/sbin:$PATH"
 
 # pure
-# fpath+=~/.dotfiles/zsh/modules/pure
 autoload -U promptinit; promptinit
-prompt pure
-zstyle :prompt:pure:git:dirty color 242
-PURE_PROMPT_SYMBOL="%(?.%F{red}❯%f%F{yellow}❯%f%F{green}❯%f.❯❯❯)"
-PURE_PROMPT_VICMD_SYMBOL="%(?.%F{green}❮%f%F{yellow}❮%f%F{red}❮%f.❮❮❮)"
+if prompt pure >/dev/null; then
+    zstyle :prompt:pure:git:dirty color 242
+    PURE_PROMPT_SYMBOL="%(?.%F{red}❯%f%F{yellow}❯%f%F{green}❯%f.❯❯❯)"
+    PURE_PROMPT_VICMD_SYMBOL="%(?.%F{green}❮%f%F{yellow}❮%f%F{red}❮%f.❮❮❮)"
+fi
 
 # zsh-autosuggestions
-autoload compinit; compinit
 setopt nobeep
-source ~/.dotfiles/zsh/modules/autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(history)
-ZSH_AUTOSUGGEST_USE_ASYNC=true
-# make sure fzf-completion defaults to autosuggest-accept on tab
-ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(fzf-completion)
-fzf_default_completion=autosuggest-accept
+autoload compinit; compinit
+if command -v brew >/dev/null 2>&1 && [[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+    ZSH_AUTOSUGGEST_USE_ASYNC=true
+    # make sure fzf-completion defaults to autosuggest-accept on tab
+    ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(fzf-completion)
+    fzf_default_completion=autosuggest-accept
+fi
 
 # fzf
-if [[ -f ~/.fzf.zsh ]]; then
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-else
-    if command -v brew >/dev/null 2>&1 && [[ -x $(brew --prefix)/opt/fzf/install ]]; then
+if command -v brew >/dev/null 2>&1 && [[ -x $(brew --prefix)/opt/fzf/install ]]; then
+    if [[ -f ~/.fzf.zsh ]]; then
+        [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    else
         $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc >/dev/null 2>&1
         source ~/.fzf.zsh
     fi
@@ -50,7 +52,9 @@ fi
 
 
 # zsh-syntax-highlighting (must be sourced after everything else)
-source ~/.dotfiles/zsh/modules/syntax-highlighting/zsh-syntax-highlighting.zsh
+if command -v brew >/dev/null 2>&1 && [[ -f $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # pyenv
 if [[ -d "$HOME/.pyenv" ]]; then

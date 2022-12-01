@@ -43,7 +43,8 @@ cask "alfred"
 cask "hiddenbar"
 
 # development tools
-cask "intellij-idea"
+cask "docker"
+cask "intellij-idea-ce"
 cask "postman"
 brew "pyenv"
 brew "jenv"
