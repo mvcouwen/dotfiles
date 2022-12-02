@@ -1,9 +1,11 @@
 # shell
-brew "zsh"
 brew "pure"
-brew "zsh-syntax-highlighting"
-brew "zsh-autosuggestions"
+brew "shellcheck"
+brew "shfmt"
 brew "tmux"
+brew "zsh"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 # tools
 brew "fzf"
@@ -16,6 +18,7 @@ brew "gnupg"
 
 # vim
 brew "vim"
+brew "vint"
 brew "neovim"
 
 # node (needed for coc.nvim)

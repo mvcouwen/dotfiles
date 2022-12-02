@@ -238,8 +238,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <plug>(coc-format-selected)
-nmap <leader>f  <plug>(coc-format-selected)
+xmap <leader>f  <plug>(coc-format)
+nmap <leader>f  <plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -298,7 +298,7 @@ vmap <leader>x <plug>(execute)
 " View output (define <plug>(view) based on filetype)
 nmap <leader>v <plug>(view)
 
-let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python","coc-java"]
+let g:coc_global_extensions = ["coc-snippets","coc-texlab","coc-python","coc-java","coc-diagnostic"]
 
 " Enable italics
 let &t_ZH="\e[3m"
