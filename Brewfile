@@ -1,7 +1,5 @@
 # shell
 brew "pure"
-brew "shellcheck"
-brew "shfmt"
 brew "tmux"
 brew "zsh"
 brew "zsh-autosuggestions"
@@ -17,11 +15,16 @@ brew "git"
 brew "gnupg"
 
 # vim
-brew "vim"
-brew "vint"
 brew "neovim"
+brew "ripgrep"
+brew "vim"
 
-# node (needed for coc.nvim)
+# lsp
+brew "bash-language-server"
+brew "lua-language-server"
+brew "shellcheck"
+
+# node
 brew "node"
 
 # font
@@ -31,7 +34,6 @@ cask "font-hack-nerd-font"
 # latex
 cask "mactex-no-gui"
 cask "skim"
-brew "texlab"
 
 # window manager
 cask "rectangle"
@@ -46,8 +48,6 @@ cask "alfred"
 cask "hiddenbar"
 
 # development tools
-cask "docker"
-cask "intellij-idea-ce"
 cask "postman"
 brew "pyenv"
 brew "jenv"

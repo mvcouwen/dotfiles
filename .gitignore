@@ -27,3 +27,6 @@ Temporary Items
 
 # Brewfile.lock
 Brewfile.lock.json
+
+# packer.nvim
+nvim/plugin/packer_compiled.lua
