@@ -1,5 +1,3 @@
-vim.opt.background = "dark"
-vim.cmd("colorscheme gruvbox")
 
 -- LSP diagnostics
 vim.fn.sign_define("DiagnosticSignError", { text = "--", texthl = "DiagnosticSignError" })

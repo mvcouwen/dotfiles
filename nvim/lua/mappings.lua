@@ -29,11 +29,3 @@ map('n', '<space>rn', vim.lsp.buf.rename, opts)
 map('n', '<space>ca', vim.lsp.buf.code_action, opts)
 map('n', 'gr', vim.lsp.buf.references, opts)
 map('n', '<space>l', function() vim.lsp.buf.format { async = true } end, opts)
-
--- telescope
-local telescope = require("telescope/builtin")
-map('n', '<leader>ff', telescope.find_files, opts)
-map('n', '<leader>fg', telescope.live_grep, opts)
-map('n', '<leader>fb', telescope.buffers, opts)
-map('n', '<leader><tab>', telescope.buffers, opts)
-map('n', '<leader>fh', telescope.help_tags, opts)

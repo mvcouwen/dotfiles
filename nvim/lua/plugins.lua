@@ -17,13 +17,22 @@ require("packer").startup(function(use)
     use({ "wbthomason/packer.nvim" })
 
     -- Gruvbox color scheme
-    use({ "ellisonleao/gruvbox.nvim" })
+    use({
+        "ellisonleao/gruvbox.nvim",
+        config = function() require("config/gruvbox") end
+    })
 
     -- LSP config
-    use({ "neovim/nvim-lspconfig" })
+    use({
+        "neovim/nvim-lspconfig",
+        config = function() require("config/nvim-lspconfig") end
+    })
 
     -- Lualine
-    use({ "nvim-lualine/lualine.nvim" })
+    use({
+        "nvim-lualine/lualine.nvim",
+        config = function() require("config/lualine") end
+    })
 
     -- Luasnip
     use({ "L3MON4D3/LuaSnip" })
@@ -34,7 +43,8 @@ require("packer").startup(function(use)
         requires = {
             "L3MON4D3/LuaSnip",
             "hrsh7th/cmp-nvim-lsp"
-        }
+        },
+        config = function() require("config/nvim-cmp") end
     })
 
     -- Telescope
@@ -42,15 +52,11 @@ require("packer").startup(function(use)
         "nvim-telescope/telescope.nvim",
         requires = {
             "nvim-lua/plenary.nvim"
-        }
+        },
+        config = function() require("config/telescope") end
     })
 
     -- Vim-tmux-navigator
     use({ "christoomey/vim-tmux-navigator" })
 
 end)
-
-require("config/nvim-lspconfig")
-require("config/lualine")
-require("config/telescope")
-require("config/nvim-cmp")
