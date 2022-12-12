@@ -43,8 +43,6 @@ Plug 'benmills/vimux'
 " Initialize plugin system
 call plug#end()
 
-set completeopt=menu,menuone,noselect
-
 if $COLORTERM == "truecolor" || $COLORTERM == "24bit"
     set termguicolors
 endif
