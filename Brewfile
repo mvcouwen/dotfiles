@@ -31,10 +31,6 @@ brew "node"
 tap "homebrew/cask-fonts"
 cask "font-hack-nerd-font"
 
-# latex
-cask "mactex-no-gui"
-cask "skim"
-
 # window manager
 cask "rectangle"
 
