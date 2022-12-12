@@ -137,6 +137,19 @@ else
     log_info "Succesfully installed dependencies."
 fi
 
+log_info "Installing node dependencies with npm..."
+if ! NPM=`command -v npm`; then
+    exit_error "Unable to find npm. This should have been installed with brew."
+fi
+for NODE_DEPENDENCY in \
+    vscode-langservers-extracted \
+    vim-language-server
+do
+    if ! run $NPM install --global $NODE_DEPENDENCY >/dev/null ; then
+        log_warn "Failed to install npm dependency:" $NODE_DEPENDENCY
+    fi
+done
+
 # Install tmux terminfo
 
 check_tic() {
@@ -212,8 +225,7 @@ link_dotfile() {
 
 link_dotfile "zsh/zshrc" ".zshrc"
 link_dotfile "vim/vimrc" ".vimrc"
-link_dotfile "vim/init.vim" ".config/nvim/init.vim"
-link_dotfile "vim/coc-settings.json" ".config/nvim/coc-settings.json"
+link_dotfile "nvim" ".config/nvim"
 link_dotfile "tmux.conf" ".tmux.conf"
 
 log_info "Installing iTerm2 preferences..."
