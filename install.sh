@@ -137,19 +137,6 @@ else
     log_info "Succesfully installed dependencies."
 fi
 
-log_info "Installing node dependencies with npm..."
-if ! NPM=`command -v npm`; then
-    exit_error "Unable to find npm. This should have been installed with brew."
-fi
-for NODE_DEPENDENCY in \
-    vscode-langservers-extracted \
-    vim-language-server
-do
-    if ! run $NPM install --global $NODE_DEPENDENCY >/dev/null ; then
-        log_warn "Failed to install npm dependency:" $NODE_DEPENDENCY
-    fi
-done
-
 # Install tmux terminfo
 
 check_tic() {

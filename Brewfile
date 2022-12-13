@@ -19,11 +19,6 @@ brew "neovim"
 brew "ripgrep"
 brew "vim"
 
-# lsp
-brew "bash-language-server"
-brew "lua-language-server"
-brew "shellcheck"
-
 # node
 brew "node"
 

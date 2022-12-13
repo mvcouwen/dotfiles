@@ -1,22 +1,28 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
-    vim.cmd("packadd packer.nvim")
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd("packadd packer.nvim")
+        return true
+    end
+    return false
 end
 
 ensure_packer()
 
 require("packer").startup(function(use)
 
-    -- Packer can manage itself
+    -- packer can manage itself
     use({ "wbthomason/packer.nvim" })
 
-    -- Gruvbox color scheme
+    -- gitsigns
+    use({
+        "lewis6991/gitsigns.nvim",
+        config = function() require("config/gitsigns") end
+    })
+
+    -- gruvbox color scheme
     use({
         "ellisonleao/gruvbox.nvim",
         config = function() require("config/gruvbox") end
@@ -28,14 +34,20 @@ require("packer").startup(function(use)
         config = function() require("config/nvim-lspconfig") end
     })
 
-    -- Lualine
+    -- lualine
     use({
         "nvim-lualine/lualine.nvim",
         config = function() require("config/lualine") end
     })
 
-    -- Luasnip
+    -- luasnip
     use({ "L3MON4D3/LuaSnip" })
+
+    -- mason
+    use({
+        "williamboman/mason.nvim",
+        config = function() require("config/mason") end
+    })
 
     -- nvim-cmp
     use({
@@ -47,7 +59,7 @@ require("packer").startup(function(use)
         config = function() require("config/nvim-cmp") end
     })
 
-    -- Telescope
+    -- telescope
     use({
         "nvim-telescope/telescope.nvim",
         requires = {
@@ -56,7 +68,7 @@ require("packer").startup(function(use)
         config = function() require("config/telescope") end
     })
 
-    -- Vim-tmux-navigator
+    -- vim-tmux-navigator
     use({ "christoomey/vim-tmux-navigator" })
 
 end)
