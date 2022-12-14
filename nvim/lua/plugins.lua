@@ -49,6 +49,14 @@ require("packer").startup(function(use)
         config = function() require("config/mason") end
     })
 
+
+    -- null-ls
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function() require("config/null-ls") end,
+    })
+
     -- nvim-cmp
     use({
         "hrsh7th/nvim-cmp",

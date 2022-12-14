@@ -35,6 +35,9 @@ g.netrw_banner = 0
 -- completion
 opt.completeopt = "menu,menuone,noinsert"
 
+-- default to posix shell instead of old Bourne shell syntax (see :h ft-sh-syntax)
+g.is_posix = 1
+
 opt.mouse = "a" -- enable all mouse actions
 opt.hidden = true
 opt.backspace = "indent,eol,start"
