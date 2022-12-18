@@ -29,10 +29,7 @@ require("packer").startup(function(use)
     })
 
     -- LSP config
-    use({
-        "neovim/nvim-lspconfig",
-        config = function() require("config/nvim-lspconfig") end,
-    })
+    use({ "neovim/nvim-lspconfig" })
 
     -- lualine
     use({
@@ -47,6 +44,16 @@ require("packer").startup(function(use)
     use({
         "williamboman/mason.nvim",
         config = function() require("config/mason") end
+    })
+
+    -- mason lspconfig
+    use({
+        "williamboman/mason-lspconfig.nvim",
+        config = function() require("config/mason-lspconfig") end,
+        requires = {
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim"
+        }
     })
 
     -- null-ls
