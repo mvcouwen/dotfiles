@@ -211,7 +211,7 @@ link_dotfile() {
 			return
 		fi
 	fi
-	if ! run mkdir -p "$(dirname "$FULL_PATH")" && run ln -s "${PREFIX}/${1}" "$FULL_PATH"; then
+	if ! ( run mkdir -p "$(dirname "$FULL_PATH")" && run ln -s "${PREFIX}/${1}" "$FULL_PATH" ); then
 		log_warn "Failed to link ${PREFIX}/${1} to ${FULL_PATH}."
 		false
 		return

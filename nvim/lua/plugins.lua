@@ -31,7 +31,7 @@ require("packer").startup(function(use)
     -- LSP config
     use({
         "neovim/nvim-lspconfig",
-        config = function() require("config/nvim-lspconfig") end
+        config = function() require("config/nvim-lspconfig") end,
     })
 
     -- lualine
@@ -49,12 +49,11 @@ require("packer").startup(function(use)
         config = function() require("config/mason") end
     })
 
-
     -- null-ls
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = { "nvim-lua/plenary.nvim" },
-        config = function() require("config/null-ls") end,
+        config = function() require("config/null-ls") end
     })
 
     -- nvim-cmp
@@ -70,9 +69,7 @@ require("packer").startup(function(use)
     -- telescope
     use({
         "nvim-telescope/telescope.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim"
-        },
+        requires = { "nvim-lua/plenary.nvim" },
         config = function() require("config/telescope") end
     })
 
