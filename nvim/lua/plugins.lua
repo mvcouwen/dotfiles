@@ -29,7 +29,15 @@ require("packer").startup(function(use)
     })
 
     -- LSP config
-    use({ "neovim/nvim-lspconfig" })
+    use({
+        "neovim/nvim-lspconfig",
+        config = function() require("config/nvim-lspconfig") end,
+        requires = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/nvim-cmp",
+            "williamboman/mason-lspconfig.nvim"
+        }
+    })
 
     -- lualine
     use({
@@ -50,34 +58,32 @@ require("packer").startup(function(use)
     use({
         "williamboman/mason-lspconfig.nvim",
         config = function() require("config/mason-lspconfig") end,
-        requires = {
-            "neovim/nvim-lspconfig",
-            "williamboman/mason.nvim"
-        }
+        requires = { "williamboman/mason.nvim" }
     })
 
     -- null-ls
     use({
         "jose-elias-alvarez/null-ls.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = function() require("config/null-ls") end
+        config = function() require("config/null-ls") end,
+        requires = { "nvim-lua/plenary.nvim" }
     })
 
     -- nvim-cmp
     use({
         "hrsh7th/nvim-cmp",
+        config = function() require("config/nvim-cmp") end,
         requires = {
+            "saadparwaiz1/cmp_luasnip",
             "L3MON4D3/LuaSnip",
             "hrsh7th/cmp-nvim-lsp"
-        },
-        config = function() require("config/nvim-cmp") end
+        }
     })
 
     -- telescope
     use({
         "nvim-telescope/telescope.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = function() require("config/telescope") end
+        config = function() require("config/telescope") end,
+        requires = { "nvim-lua/plenary.nvim" }
     })
 
     -- vim-tmux-navigator

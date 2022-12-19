@@ -33,6 +33,10 @@ setopt nobeep
 autoload compinit; compinit
 if command -v brew >/dev/null 2>&1 && [[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # overwrite function to only allow unambiguous completion
+    function _zsh_autosuggest_capture_postcompletion() {
+        unset 'compstate[list]'
+    }
     ZSH_AUTOSUGGEST_STRATEGY=(completion history)
     ZSH_AUTOSUGGEST_USE_ASYNC=true
     # make sure fzf-completion defaults to autosuggest-accept on tab
