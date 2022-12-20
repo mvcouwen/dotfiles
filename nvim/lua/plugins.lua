@@ -13,8 +13,12 @@ ensure_packer()
 
 require("packer").startup(function(use)
 
-    -- packer can manage itself
-    use({ "wbthomason/packer.nvim" })
+    -- autopairs
+    use({
+        "windwp/nvim-autopairs",
+        config = function() require("config/nvim-autopairs") end,
+        requires = { "hrsh7th/nvim-cmp" }
+    })
 
     -- gitsigns
     use({
@@ -78,6 +82,9 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp"
         }
     })
+
+    -- packer can manage itself
+    use({ "wbthomason/packer.nvim" })
 
     -- telescope
     use({
