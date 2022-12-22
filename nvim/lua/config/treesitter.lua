@@ -1,7 +1,10 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = {"json", "lua", "yaml"},
+    ensure_installed = {"java", "json", "lua", "yaml"},
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false
+    },
+    indent = {
+        enable = true
     }
 })

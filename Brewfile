@@ -15,7 +15,8 @@ brew "git"
 brew "gnupg"
 
 # vim
-brew "neovim"
+# HEAD installs of neovim do not include treesitter parsers
+brew "neovim", args: ["HEAD"]
 brew "ripgrep"
 brew "vim"
 

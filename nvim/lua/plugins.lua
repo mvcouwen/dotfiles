@@ -16,7 +16,7 @@ require("packer").startup(function(use)
     -- autopairs
     use({
         "windwp/nvim-autopairs",
-        config = function() require("config/nvim-autopairs") end,
+        config = function() require("config/autopairs") end,
         requires = { "hrsh7th/nvim-cmp" }
     })
 
@@ -35,7 +35,7 @@ require("packer").startup(function(use)
     -- LSP config
     use({
         "neovim/nvim-lspconfig",
-        config = function() require("config/nvim-lspconfig") end,
+        config = function() require("config/lspconfig") end,
         requires = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/nvim-cmp",
@@ -75,7 +75,7 @@ require("packer").startup(function(use)
     -- nvim-cmp
     use({
         "hrsh7th/nvim-cmp",
-        config = function() require("config/nvim-cmp") end,
+        config = function() require("config/cmp") end,
         requires = {
             "saadparwaiz1/cmp_luasnip",
             "L3MON4D3/LuaSnip",
@@ -96,9 +96,9 @@ require("packer").startup(function(use)
     -- treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
-        config = function() require("config/nvim-treesitter") end,
+        config = function() require("config/treesitter") end,
         run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
             ts_update()
         end,
     })
