@@ -93,6 +93,16 @@ require("packer").startup(function(use)
         requires = { "nvim-lua/plenary.nvim" }
     })
 
+    -- treesitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        config = function() require("config/nvim-treesitter") end,
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    })
+
     -- vim-tmux-navigator
     use({ "christoomey/vim-tmux-navigator" })
 
