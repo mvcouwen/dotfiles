@@ -31,3 +31,8 @@ lspconfig.sumneko_lua.setup({
         }
     }
 })
+
+-- yamlls
+lspconfig.yamlls.setup({
+    capabilities = capabilities
+})
