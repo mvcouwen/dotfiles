@@ -27,6 +27,10 @@ lspconfig.sumneko_lua.setup({
         Lua = {
             diagnostics = {
                 globals = { "vim" }
+            },
+            semantic = {
+                -- leave syntax highlighting to treesitter
+                enable = false
             }
         }
     }
