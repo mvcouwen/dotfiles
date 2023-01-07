@@ -13,7 +13,7 @@ I have written an install script that does the following things automatically.
 2. Install some dependencies using `brew bundle`.
 3. Compile terminfo for tmux.
 4. Link the dotfiles in the correct place (backing up any configuration files already present).
-5. Telling iTerm2 to sync its preferences whit the plist in this repository.
+5. Telling iTerm2 to sync its preferences with the plist in this repository.
 
 It shouldn't be too hard to customize this install script. I definitely recommend looking at the Brewfile to specify the dependencies that you want to install using Homebrew.
 
