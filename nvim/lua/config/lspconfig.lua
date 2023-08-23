@@ -9,6 +9,10 @@ lspconfig.bashls.setup({
     capabilities = capabilities
 })
 
+lspconfig.html.setup({
+    capabilities = capabilities
+})
+
 -- jsonls
 lspconfig.jsonls.setup({
     capabilities = capabilities

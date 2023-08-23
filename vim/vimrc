@@ -7,8 +7,8 @@ let g:maplocalleader = ","
 " Install vim plug if not installed
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync q | source $MYVIMRC
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Specify a directory for plugins
@@ -47,7 +47,10 @@ if $COLORTERM == "truecolor" || $COLORTERM == "24bit"
     set termguicolors
 endif
 set background=dark
-colorscheme gruvbox
+try
+    colorscheme gruvbox
+catch
+endtry
 set guifont=Hack\ Nerd\ Font
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -158,7 +161,10 @@ let s:p.tabline.right = [ [ s:fg4, s:bg1 ] ]
 let s:p.normal.error = [ [ s:bg0, s:red] ]
 let s:p.normal.warning = [ [ s:bg0, s:orange] ]
 
-let g:lightline#colorscheme#gruvbox#palette = lightline#colorscheme#flatten(s:p) "flatten makes pairs of pairs into quadruples
+try
+    let g:lightline#colorscheme#gruvbox#palette = lightline#colorscheme#flatten(s:p) "flatten makes pairs of pairs into quadruples
+catch
+endtry
 
 " Settings for coc.nvim
 set cmdheight=1 "one line for under statusline

@@ -36,9 +36,6 @@ cask "iterm2"
 # alfred
 cask "alfred"
 
-# hidden bar
-cask "hiddenbar"
-
 # development tools
 cask "postman"
 brew "pyenv"

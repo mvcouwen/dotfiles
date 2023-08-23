@@ -17,9 +17,6 @@ bindkey -v '^?' backward-delete-char
 # register GPG_TTY
 export GPG_TTY=$(tty)
 
-# add homebrew sbin to path
-export PATH="/usr/local/sbin:$PATH"
-
 # pure
 autoload -U promptinit; promptinit
 if prompt pure >/dev/null; then
@@ -52,6 +49,16 @@ if command -v brew >/dev/null 2>&1 && [[ -x $(brew --prefix)/opt/fzf/install ]];
         $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc >/dev/null 2>&1
         source ~/.fzf.zsh
     fi
+fi
+
+# zsh-system-clipboard (must be sourced after all bindings)
+if [[ ! -f ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
+    if ! git clone https://github.com/kutsan/zsh-system-clipboard ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard >/dev/null 2>&1; then
+        >&2 echo "Failed to install zsh-system-clipboard"
+    fi
+fi
+if [[ -f ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh ]]; then
+    source ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 fi
 
 

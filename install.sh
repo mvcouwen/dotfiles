@@ -100,13 +100,14 @@ cd "$(dirname "$0")" || exit_error "Unable to find dotfiles"
 
 log_info "Checking Homebrew installation..."
 
-BASH=/usr/bin/bash
+BASH=/bin/bash
 CURL=/usr/bin/curl
 install_homebrew() {
 	check_command "$BASH" &&
 		check_command "$CURL" &&
 		get_sudo_access &&
 		run $BASH -c "$($CURL -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		run eval "$(/opt/homebrew/bin/brew shellenv)"
 }
 
 if ! BREW=$(command -v brew); then
@@ -176,11 +177,11 @@ compile_tmux_256color() {
 		return
 	fi
 	log_info "Compiling terminfo description for tmux."
-	if check_tic && check_curl && check_gunzip; then
-		run $CURL -LO -o "${PREFIX}/terminfo.src.gz" https://invisible-island.net/datafiles/current/terminfo.src.gz &&
+	if check_tic && check_curl_warn && check_gunzip; then
+		run $CURL -L --output "terminfo.src.gz" https://invisible-island.net/datafiles/current/terminfo.src.gz &&
 			run $GUNZIP terminfo.src.gz &&
-			run $TIC -xe tmux-256color "${PREFIX}/terminfo.src"
-		run rm "${PREFIX}/terminfo.src"
+			run $TIC -xe tmux-256color "terminfo.src"
+		run rm "terminfo.src"
 	fi
 }
 
@@ -219,6 +220,7 @@ link_dotfile() {
 }
 
 link_dotfile "zsh/zshrc" ".zshrc"
+link_dotfile "zsh/zprofile" ".zprofile"
 link_dotfile "vim/vimrc" ".vimrc"
 link_dotfile "nvim" ".config/nvim"
 link_dotfile "tmux.conf" ".tmux.conf"
@@ -236,5 +238,8 @@ install_iterm_preferences() {
 if ! install_iterm_preferences; then
 	log_warm "Failed to install iTerm2 preferences."
 fi
+
+log_info "Installing MacOS preferences..."
+run ./macos.sh
 
 log_info "Installation successful."
