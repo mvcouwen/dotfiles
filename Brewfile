@@ -15,8 +15,7 @@ brew "git"
 brew "gnupg"
 
 # vim
-# HEAD installs of neovim do not include treesitter parsers
-brew "neovim", args: ["HEAD"]
+brew "neovim"
 brew "ripgrep"
 brew "vim"
 
@@ -33,7 +32,12 @@ cask "iterm2"
 # raycast
 cask "raycast"
 
+# 1password
+cask "1password"
+
 # development tools
+cask "docker"
+cask "intellij-idea"
 cask "postman"
 brew "pyenv"
 brew "jenv"
