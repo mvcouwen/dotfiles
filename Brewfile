@@ -27,14 +27,11 @@ brew "node"
 tap "homebrew/cask-fonts"
 cask "font-hack-nerd-font"
 
-# window manager
-cask "rectangle"
-
 # terminal
 cask "iterm2"
 
-# alfred
-cask "alfred"
+# raycast
+cask "raycast"
 
 # development tools
 cask "postman"
