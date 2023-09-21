@@ -34,6 +34,7 @@ cask "raycast"
 
 # 1password
 cask "1password"
+cask "1password-cli"
 
 # development tools
 cask "docker"
