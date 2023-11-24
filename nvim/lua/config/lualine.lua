@@ -1,4 +1,4 @@
-local colors = require("gruvbox/palette").colors
+local colors = require("gruvbox").palette
 
 local theme = {
   normal = {
